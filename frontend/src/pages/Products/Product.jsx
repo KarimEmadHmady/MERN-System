@@ -5,7 +5,7 @@ import HeartIcon from "./HeartIcon";
 const Product = ({ product }) => {
   console.log(product)
   return (
-    <div className="w-[30rem] ml-[2rem] p-3 relative">
+    <div className="small-product-header w-[30rem] ml-[2rem] p-3 relative">
       <div className="relative">
         <img
           src={product.image}
@@ -19,7 +19,7 @@ const Product = ({ product }) => {
         <Link to={`/product/${product._id}`}>
           <h2 className="flex justify-between items-center">
             <div className="text-lg">{product.name}</div>
-            <span className="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+            <span className="bg-[#5f2476] text-[#fff] text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-[#5f2476] dark:text-[#fff]">
               $ {product.price}
             </span>
           </h2>

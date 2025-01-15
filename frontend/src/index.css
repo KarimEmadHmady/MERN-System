@@ -2,8 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  width: 10px; 
+  height: 10px; 
+}
+
+::-webkit-scrollbar-track {
+  background: #00000086; 
+
+}
+
+/* Thumb (the moving part) */
+::-webkit-scrollbar-thumb {
+  background: #5f2476; 
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5f2476; 
+}
+::selection {
+  background: #5f2476; 
+  color: #fff; 
+}
+
 body {
-  background: #0f0f10;
+  background: #070708;
   color: #fff;
 }
 
@@ -11,3 +35,125 @@ input,
 textarea {
   color: #000;
 }
+
+.price-curs{
+  color: red;
+  margin:22px 0 ;
+  opacity: 0.8;
+}
+.section-price {
+  background-image: url('/uploads/backg-ho.png'); 
+  background-size: cover;
+  background-position-x: 194px;
+  background-repeat: no-repeat;
+
+}
+
+.first-sections-home {
+  background-image: url('/uploads/backgroung.png'); 
+  background-size: cover;
+  background-position: 30%;
+  margin-top: -30px;
+}
+
+.footer-bg {
+  background-image: url('/uploads/footer-bg.png'); 
+  background-size: cover;
+  background-position: 30%;
+  background-position-x: 389px;
+
+}
+@media (max-width:600px) {
+  .sections-three-report{
+    padding: 0 20px;
+  }
+  .shop-products .small-product-header{
+    width: 100%;
+  }
+  .section-price {
+    background-position-x: 81%;
+    background-position-y: 14%;
+  }
+  .footer-bg {
+    background-position: 58%;
+    background-position-x: none;
+  }
+  .main-header-p{
+    color: #908495;
+  }
+}
+
+/* handle sections products in home page  */
+@media (max-width:1570px) {
+  .section-header-products{
+    flex-direction: column-reverse;
+    padding-top: 22px;
+  }
+  .section-header-small-products{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .details-or-slider{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 13px;
+  }
+  .one {
+    text-align: center;
+    
+  }
+  .container-crus-image{
+    margin: 0 25px;
+    padding: 0 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .image-cureusel {
+    height: 15em;
+    object-fit: contain;
+    border-radius: 20px;
+  }
+  .price-name-curs{
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+  }
+  .price-curs{
+    font-size: 13px;
+    padding: 2px 8px;
+    background-color: red;
+    border: none;
+    border-radius:15px;
+    opacity: 0.8;
+    margin:0 ;
+    color: white;
+  }
+  .description-curse {
+    visibility: hidden;
+  }
+  .container-shop-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin:  30px 0;
+  }
+  .container-shop-header a {
+    margin: 0;
+  }
+  .h1-shop-Special-Products{
+    margin: 0 ;
+    font-size: 20px;
+  }
+  .small-product-header {
+    margin: 0;
+  }
+
+}
+
+

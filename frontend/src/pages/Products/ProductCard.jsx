@@ -20,7 +20,7 @@ const ProductCard = ({ p }) => {
     <div className="max-w-sm relative bg-[#1A1A1A] rounded-lg shaodw dark:bg-gray-800 dark:border-gray-700">
       <section className="relative">
         <Link to={`/product/${p._id}`}>
-          <span className="absolute bottom-3 right-3 bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+          <span className="absolute bottom-3 right-3 bg-[#5f2476] text-[#5f2476] text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-[#5f2476] dark:text-[#fff]">
             {p?.brand}
           </span>
           <img
@@ -37,7 +37,7 @@ const ProductCard = ({ p }) => {
         <div className="flex justify-between">
           <h5 className="mb-2 text-xl text-whiet dark:text-white">{p?.name}</h5>
 
-          <p className="text-black font-semibold text-red-500">
+          <p className="text-black font-semibold text-[#5f2476]">
             {p?.price?.toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
@@ -52,7 +52,7 @@ const ProductCard = ({ p }) => {
         <section className="flex justify-between items-center">
           <Link
             to={`/product/${p._id}`}
-            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#5f2476] rounded-lg hover:bg-[#5f2476] focus:ring-4 focus:outline-none focus:ring-[#5f2476] dark:bg-[#5f2476] dark:hover:bg-[#5f2476] dark:focus:ring-[#5f2476]"
           >
             Read More
             <svg

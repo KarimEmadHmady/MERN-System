@@ -124,7 +124,7 @@ const Register = () => {
           <button
             disabled={isLoading}
             type="submit"
-            className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer my-[1rem]"
+            className="bg-[#5f2476] text-white px-4 py-2 rounded cursor-pointer my-[1rem]"
           >
             {isLoading ? "Registering..." : "Register"}
           </button>
@@ -137,7 +137,7 @@ const Register = () => {
             Already have an account?{" "}
             <Link
               to={redirect ? `/login?redirect=${redirect}` : "/login"}
-              className="text-red-500 hover:underline"
+              className="text-[#5f2476] hover:underline"
             >
               Login
             </Link>

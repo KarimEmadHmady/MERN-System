@@ -58,7 +58,7 @@ const OrderList = () => {
                       Completed
                     </p>
                   ) : (
-                    <p className="p-1 text-center bg-red-400 w-[6rem] rounded-full">
+                    <p className="p-1 text-center bg-[#5f2476] w-[6rem] rounded-full">
                       Pending
                     </p>
                   )}
@@ -70,7 +70,7 @@ const OrderList = () => {
                       Completed
                     </p>
                   ) : (
-                    <p className="p-1 text-center bg-red-400 w-[6rem] rounded-full">
+                    <p className="p-1 text-center bg-[#5f2476] w-[6rem] rounded-full">
                       Pending
                     </p>
                   )}

@@ -45,7 +45,7 @@ const Cart = () => {
                   </div>
 
                   <div className="flex-1 ml-4">
-                    <Link to={`/product/${item._id}`} className="text-red-500">
+                    <Link to={`/product/${item._id}`} className="text-[#5f2476]">
                       {item.name}
                     </Link>
 
@@ -73,7 +73,7 @@ const Cart = () => {
 
                   <div>
                     <button
-                      className="text-red-500 mr-[5rem]"
+                      className="text-[#5f2476] mr-[5rem]"
                       onClick={() => removeFromCartHandler(item._id)}
                     >
                       <FaTrash className="ml-[1rem] mt-[.5rem]" />
@@ -96,7 +96,7 @@ const Cart = () => {
                   </div>
 
                   <button
-                    className="bg-red-500 mt-4 py-2 px-4 rounded-full text-lg w-full"
+                    className="bg-[#5f2476] mt-4 py-2 px-4 rounded-full text-lg w-full"
                     disabled={cartItems.length === 0}
                     onClick={checkoutHandler}
                   >

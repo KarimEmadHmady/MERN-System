@@ -253,7 +253,7 @@ const AdminProductUpdate = () => {
                 </button>
                 <button
                   onClick={handleDelete}
-                  className="py-4 px-10 mt-5 rounded-lg text-lg font-bold  bg-red-600"
+                  className="py-4 px-10 mt-5 rounded-lg text-lg font-bold  bg-[#5f2476]"
                 >
                   Delete
                 </button>
