@@ -25,7 +25,7 @@ const App = () => {
   </div>
 
   <div className="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8">
-        <img className="w-auto mb-10" src="https://cdn.rareblocks.xyz/collection/celebration/images/logo.svg" alt="" />
+        <img className="w-auto mb-10" src="../../uploads/community.webp" alt="" />
     <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
       <div>
         <p>

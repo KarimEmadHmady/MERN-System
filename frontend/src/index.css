@@ -41,11 +41,12 @@ textarea {
   margin:22px 0 ;
   opacity: 0.8;
 }
-.section-price {
-  background-image: url('/uploads/backg-ho.png'); 
+.shop-products {
+  background-image: url(/uploads/backg-ho.png);
   background-size: cover;
-  background-position-x: 194px;
+  background-position-y: -169px;
   background-repeat: no-repeat;
+  padding-top: 40px;
 
 }
 
@@ -61,12 +62,40 @@ textarea {
   background-size: cover;
   background-position: 30%;
   background-position-x: 389px;
+}
 
+.btn-profile-menu {
+  padding: 2px 7px;  background-color: #5f2476; border-radius: 5px;
+}
+.sections-contact{
+  position: relative;
+}
+
+.containar-filter {
+  display: none;
+}
+
+.container-products-shoppage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+@media (min-width:1070px) {
+
+  .div-section-contact {
+    position: absolute;
+    width: 78%;
+    top: 83%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 50px;
+  }
 }
 @media (max-width:600px) {
-  .sections-three-report{
-    padding: 0 20px;
-  }
+
   .shop-products .small-product-header{
     width: 100%;
   }
@@ -82,6 +111,8 @@ textarea {
     color: #908495;
   }
 }
+
+
 
 /* handle sections products in home page  */
 @media (max-width:1570px) {
@@ -152,6 +183,25 @@ textarea {
   }
   .small-product-header {
     margin: 0;
+  }
+
+  .list-filter {
+    position: relative;
+    z-index: 99;
+    position: absolute;
+    /* left: -267px; */
+    transition: 0.8s;
+  }
+
+  .containar-filter {
+    position: absolute;
+    right: -70px;
+    top: -15px;
+    display: block;
+    display: flex;
+    flex-direction: row-reverse;
+    cursor: pointer;
+    
   }
 
 }

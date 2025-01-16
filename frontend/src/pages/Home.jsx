@@ -65,7 +65,7 @@ const Home = () => {
             </div>
 
             <div className="lg:col-span-3">
-                <img className="w-full rounded-lg shadow-xl" src="https://cdn.rareblocks.xyz/collection/celebration/images/features/7/dashboard-screenshot.png" alt="" />
+                <img className="w-full rounded-lg shadow-xl" src="../../../uploads/frist.png" alt="" />
             </div>
         </div>
     </div>
@@ -118,304 +118,106 @@ const Home = () => {
       )}
 
 
-<section className="" >
-    <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
-      <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" className="w-full " alt="" />
-        <div className="mt-4 md:mt-0">
-            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Let's create more tools and ideas that brings us together.</h2>
-            <p className="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.</p>
-            <a href="#" className="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
-                Get started
-                <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-            </a>
+
+
+
+
+
+
+
+<section className="sections-contact">
+    <div className="container px-6 py-12 mx-auto">
+        <div className="text-center">
+            <p className="font-medium text-blue-500 dark:text-blue-400">Contact us</p>
+            <h1 className="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">
+                We’d love to hear from you
+            </h1>
+            <p className="mt-3 text-gray-500 dark:text-gray-400">Chat to our friendly team.</p>
+        </div>
+
+        <img 
+            className="object-cover w-full h-64 mt-10 rounded-lg lg:h-96" 
+            src="../../../uploads/2151074271.jpg" 
+            alt="" 
+        />
+
+        <div className=" div-section-contact grid grid-cols-1 gap-12 mt-10 lg:grid-cols-3 sm:grid-cols-2">
+            <div className="p-4 rounded-lg bg-black">
+                <span className="inline-block p-3  rounded-lg bg-[#5f2476]">
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        strokeWidth="1.5" 
+                        stroke="currentColor" 
+                        className="w-5 h-5 text-[#fff] "
+                    >
+                        <path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" 
+                        />
+                    </svg>
+                </span>
+                <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">Chat to sales</h2>
+                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Speak to our friendly team.</p>
+                <p className="mt-2 text-sm text-[#5f2476] ">hello@merakiui.com</p>
+            </div>
+
+            <div className="p-4 rounded-lg bg-black md:p-6 ">
+                <span className="inline-block p-3  rounded-lg bg-[#5f2476]">
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        strokeWidth="1.5" 
+                        stroke="currentColor" 
+                        className="w-5 h-5 text-[#fff]"
+                    >
+                        <path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" 
+                        />
+                        <path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" 
+                        />
+                    </svg>
+                </span>
+                <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">Visit us</h2>
+                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Visit our office HQ.</p>
+                <p className="mt-2 text-sm text-[#5f2476]">100 Smith Street Collingwood VIC 3066 AU</p>
+            </div>
+
+            <div className="p-4 rounded-lg bg-black md:p-6 ">
+                <span className="inline-block p-3  rounded-lg bg-[#5f2476]">
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        strokeWidth="1.5" 
+                        stroke="currentColor" 
+                        className="w-5 h-5 text-[#fff]"
+                    >
+                        <path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" 
+                        />
+                    </svg>
+                </span>
+                <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">Call us</h2>
+                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Mon-Fri from 8am to 5pm.</p>
+                <p className="mt-2 text-sm text-[#5f2476]">+1 (555) 000-0000</p>
+            </div>
         </div>
     </div>
 </section>
- 
-<div className="sections-three-report grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-8 mb-8 pl-[100px] pr-[100px] pb-[100px] ">
-        {/* Card */}
-        <div className="flex flex-col  overflow-hidden rounded-lg bg-black shadow-sm  dark:text-gray-100">
-          {/* Body */}
-          <div className="flex grow items-center justify-between p-5">
-            <dl className="space-y-1">
-              <dt className="text-2xl font-bold">146</dt>
-              <dd className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                Sales
-              </dd>
-            </dl>
-            <div className="inline-flex items-center gap-1 rounded-full bg-emerald-200 px-2 py-1 text-sm font-semibold leading-4 text-emerald-800">
-              <svg
-                className="hi-solid hi-arrow-circle-up inline-block size-4"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span>7.9%</span>
-            </div>
-          </div>
-          {/* END Body */}
-
-          {/* Action Link */}
-          <a
-            href="#"
-            className="block bg-gray-50 p-3 text-center text-sm font-medium text-[#5f2476] hover:bg-gray-100/75 hover:text-blue-700 active:bg-gray-50 dark:bg-gray-900/50  dark:hover:bg-gray-900/75 dark:hover:text-blue-300 dark:active:bg-gray-900/50"
-          >
-            View All Sales
-          </a>
-          {/* END Action Link */}
-        </div>
-        {/* END Card */}
-
-        {/* Card */}
-        <div className="flex flex-col overflow-hidden rounded-lg bg-black shadow-sm  dark:text-gray-100">
-          {/* Body */}
-          <div className="flex grow items-center justify-between p-5">
-            <dl className="space-y-1">
-              <dt className="text-2xl font-bold">$5,128</dt>
-              <dd className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                Earnings
-              </dd>
-            </dl>
-            <div className="inline-flex items-center gap-1 rounded-full bg-rose-200 px-2 py-1 text-sm font-semibold leading-4 text-rose-800">
-              <svg
-                className="hi-solid hi-arrow-circle-down inline-block size-4"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span>6.9%</span>
-            </div>
-          </div>
-          {/* END Body */}
-
-          {/* Action Link */}
-          <a
-            href="#"
-            className="block bg-gray-50 p-3 text-center text-sm font-medium text-[#5f2476] hover:bg-gray-100/75 hover:text-blue-700 active:bg-gray-50 dark:bg-gray-900/50  dark:hover:bg-gray-900/75 dark:hover:text-blue-300 dark:active:bg-gray-900/50"
-          >
-            View all Earnings
-          </a>
-          {/* END Action Link */}
-        </div>
-        {/* END Card */}
-
-        {/* Card */}
-        <div className="flex flex-col  overflow-hidden rounded-lg bg-black shadow-sm  dark:text-gray-100">
-          {/* Body */}
-          <div className="flex grow items-center justify-between p-5">
-            <dl className="space-y-1">
-              <dt className="text-2xl font-bold">$2,670</dt>
-              <dd className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                Wallet
-              </dd>
-            </dl>
-            <div className="inline-flex items-center gap-1 rounded-full bg-emerald-200 px-2 py-1 text-sm font-semibold leading-4 text-emerald-800">
-              <svg
-                className="hi-solid hi-arrow-circle-up inline-block size-4"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span>5.6%</span>
-            </div>
-          </div>
-          {/* END Body */}
-
-          {/* Action Link */}
-          <a
-            href="#"
-            className="block bg-gray-50 p-3 text-center text-sm font-medium text-[#5f2476] hover:bg-gray-100/75 hover:text-blue-700 active:bg-gray-50 dark:bg-gray-900/50  dark:hover:bg-gray-900/75 dark:hover:text-blue-300 dark:active:bg-gray-900/50"
-          >
-            Check your Balance
-          </a>
-          {/* END Action Link */}
-        </div>
-        {/* END Card */}
-      </div>     
 
 
 
-
-<section className="section-price">
-  <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-      <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Designed for business teams like yours</h2>
-          <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
-      </div>
-      <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
-
-          <div className="flex flex-col p-6 mx-auto border-none max-w-lg text-center text-gray-900 bg-black rounded-lg border border-gray-100 shadow  xl:p-8 bg-black dark:text-white">
-              <h3 className="mb-4 text-2xl font-semibold">Starter</h3>
-              <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best option for personal use & for your next project.</p>
-              <div className="flex justify-center items-baseline my-8">
-                  <span className="mr-2 text-5xl font-extrabold">$29</span>
-                  <span className="text-gray-500 dark:text-gray-400">/month</span>
-              </div>
-
-              <ul role="list" className="mb-8 space-y-4 text-left">
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>Individual configuration</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>No setup, or hidden fees</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>Team size: <span className="font-semibold">1 developer</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>Premium support: <span className="font-semibold">6 months</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>Free updates: <span className="font-semibold">6 months</span></span>
-                  </li>
-              </ul>
-              <a href="#" className="text-white bg-[#5f2476] hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Get started</a>
-          </div>
-
-          <div className="flex flex-col p-6 mx-auto border-none max-w-lg text-center text-gray-900 bg-black rounded-lg border border-gray-100 shadow  xl:p-8 bg-black dark:text-white">
-              <h3 className="mb-4 text-2xl font-semibold">Company</h3>
-              <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Relevant for multiple users, extended & premium support.</p>
-              <div className="flex justify-center items-baseline my-8">
-                  <span className="mr-2 text-5xl font-extrabold">$99</span>
-                  <span className="text-gray-500 dark:text-gray-400">/month</span>
-              </div>
-
-              <ul role="list" className="mb-8 space-y-4 text-left">
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>Individual configuration</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>No setup, or hidden fees</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>Team size: <span className="font-semibold">10 developers</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>Premium support: <span className="font-semibold">24 months</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>Free updates: <span className="font-semibold">24 months</span></span>
-                  </li>
-              </ul>
-              <a href="#" className="text-white bg-[#5f2476] hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Get started</a>
-          </div>
-
-          <div className="flex flex-col p-6 mx-auto border-none max-w-lg text-center text-gray-900 bg-black rounded-lg border border-gray-100 shadow  xl:p-8 bg-black dark:text-white">
-              <h3 className="mb-4 text-2xl font-semibold">Enterprise</h3>
-              <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best for large scale uses and extended redistribution rights.</p>
-              <div className="flex justify-center items-baseline my-8">
-                  <span className="mr-2 text-5xl font-extrabold">$499</span>
-                  <span className="text-gray-500 dark:text-gray-400">/month</span>
-              </div>
-
-              <ul role="list" className="mb-8 space-y-4 text-left">
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>Individual configuration</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>No setup, or hidden fees</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>Team size: <span className="font-semibold">100+ developers</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>Premium support: <span className="font-semibold">36 months</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      
-                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                      <span>Free updates: <span className="font-semibold">36 months</span></span>
-                  </li>
-              </ul>
-              <a href="#" className="text-white bg-[#5f2476] hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Get started</a>
-          </div>
-      </div>
-  </div>
-</section>
-
-
-
-
-<section className="text-gray-900 body-font relative">
-  <div className="absolute inset-0 bg-gray-500">
-  <iframe
-  width="100%"
-  height="100%"
-  title="map"
-  scrolling="no"
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55251.37451031098!2d31.258464350000004!3d30.059488450000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2sCairo%2C%20Cairo%20Governorate%2C%20Egypt!5e0!3m2!1sen!2sru!4v1736857371275!5m2!1sen!2sru"
-  style={{ filter: "grayscale(1) contrast(1.2) opacity(0.4)", border: 0, margin: 0 }}
-></iframe>
-  </div>
-  <div className="container px-5 py-24 mx-auto flex">
-    <div className="lg:w-1/3 md:w-1/2 bg-black rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
-      <h2 className="text-white text-lg mb-1 font-medium title-font">Feedback</h2>
-      <p className="leading-relaxed mb-5 text-gray-200">Post-ironic portland shabby chic echo park, banjo fashion axe</p>
-      <div className="relative mb-4">
-      <label htmlFor="email" className="leading-7 text-sm text-gray-100">Email</label>
-      <input
-  type="email"
-  id="email"
-  name="email"
-  className="w-full bg-[#00000086] rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-/>
-
-      </div>
-      <div className="relative mb-4">
-        <label for="message" className="leading-7 text-sm text-gray-600">Message</label>
-        <textarea id="message" name="message" className="w-full bg-[#00000086] rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
-      </div>
-      <button className="text-white bg-[#5f2476] border-0 py-2 px-6 focus:outline-none hover:bg-black rounded text-lg ">Send</button>
-      <p className="text-xs text-gray-500 mt-3">Chicharrones blog helvetica normcore iceland tousled brook viral artisan.</p>
-    </div>
-  </div>
-</section>
 
 
 

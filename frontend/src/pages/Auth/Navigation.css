@@ -1,7 +1,8 @@
 #navigation-container {
-  width: 4%;
-  transition: width 0.3s ease-in-out;
+  width: auto;
+  transition: width 0.9s ease-in-out;
   overflow: hidden; 
+
 }
 
 #navigation-container:hover {

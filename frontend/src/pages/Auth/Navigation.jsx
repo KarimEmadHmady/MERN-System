@@ -95,9 +95,9 @@ const Navigation = () => {
       </div>
 
       <div className="relative">
-        <button
+        <button 
           onClick={toggleDropdown}
-          className="flex items-center text-gray-800 focus:outline-none"
+          className=" btn-profile-menu  flex items-center text-gray-800 focus:outline-none"
         >
           {userInfo ? (
             <span className="text-white">{userInfo.username}</span>
@@ -126,7 +126,7 @@ const Navigation = () => {
 
         {dropdownOpen && userInfo && (
           <ul
-            className={`absolute right-0 mt-2 mr-14 space-y-2 bg-white text-gray-600 ${
+            className={`  absolute right-4 mt-2 mr-14 space-y-2 bg-[#000] text-[#5f2476] ${
               !userInfo.isAdmin ? "-top-20" : "-top-80"
             } `}
           >
