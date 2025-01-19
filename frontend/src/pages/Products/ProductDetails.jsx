@@ -82,7 +82,7 @@ const ProductDetails = () => {
         </Message>
       ) : (
         <>
-          <div className="flex flex-wrap relative items-between mt-[2rem] ml-[10rem]">
+          <div className="page-single-products flex flex-wrap relative items-between mt-[2rem] ml-[10rem]">
             <div>
               <img
                 src={product.image}
@@ -101,8 +101,8 @@ const ProductDetails = () => {
 
               <p className="text-5xl my-4 font-extrabold">$ {product.price}</p>
 
-              <div className="flex items-center justify-between w-[20rem]">
-                <div className="one">
+              <div className="page-product-propertes flex items-center justify-between w-[20rem]">
+                <div className="page-product-propertes-one one">
                   <h1 className="flex items-center mb-6">
                     <FaStore className="mr-2 text-white" /> Brand:{" "}
                     {product.brand}
@@ -166,7 +166,7 @@ const ProductDetails = () => {
               </div>
             </div>
 
-            <div className="mt-[5rem] container flex flex-wrap items-start justify-between ml-[10rem]">
+            <div className="page-single-products mt-[5rem] container flex flex-wrap items-start justify-between ml-[10rem]">
               <ProductTabs
                 loadingProductReview={loadingProductReview}
                 userInfo={userInfo}

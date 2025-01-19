@@ -93,7 +93,7 @@ const AdminDashboard = () => {
       <AdminMenu />
 
       <section className="xl:ml-[4rem] md:ml-[0rem]">
-        <div className="w-[80%] flex justify-around flex-wrap">
+        <div className="page-dashboard w-[80%] flex justify-around flex-wrap">
           <div className="rounded-lg bg-black p-5 w-[20rem] mt-5">
             <div className="font-bold rounded-full w-[3rem] bg-[#5f2476] text-center p-3">
               $
@@ -126,7 +126,7 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <div className="ml-[10rem] mt-[4rem]">
+        <div className="page-dashboard-chart ml-[10rem] mt-[4rem]">
           <Chart
             options={state.options}
             series={state.series}

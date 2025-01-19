@@ -86,16 +86,17 @@ const Shop = () => {
   const toggleFilter = () => {
     setIsFilterOpen(!isFilterOpen);
   };
+  
 
   return (
     <div className={`container mx-auto`}>
       <div className="flex md:flex-row">
         <div className={`list-filter bg-[#151515] p-3 mt-2 mb-2 transition-all duration-300 ${
-            isFilterOpen ? "left-0  " : "left-[-267px]  " 
+            isFilterOpen ? "left-0  " : "left-[-267px] " 
           }`}
         >
           <div className="containar-filter" onClick={toggleFilter}>
-            <span>filter</span>
+          <span>filter {isFilterOpen && '❌'}</span>
             <FiFilter className="text-[#5f2476] text-2xl" />
           </div>
 

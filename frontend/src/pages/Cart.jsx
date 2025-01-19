@@ -55,9 +55,9 @@ const Cart = () => {
                     </div>
                   </div>
 
-                  <div className="w-24">
+                  <div className="selection-cart-width w-24">
                     <select
-                      className="w-full p-1 border rounded text-black"
+                      className="selection-cart w-full p-1 border rounded text-black"
                       value={item.qty}
                       onChange={(e) =>
                         addToCartHandler(item, Number(e.target.value))
@@ -71,7 +71,7 @@ const Cart = () => {
                     </select>
                   </div>
 
-                  <div>
+                  <div className="btn-cart-width">
                     <button
                       className="text-[#5f2476] mr-[5rem]"
                       onClick={() => removeFromCartHandler(item._id)}
@@ -88,7 +88,7 @@ const Cart = () => {
                     Items ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
                   </h2>
 
-                  <div className="text-2xl font-bold">
+                  <div className=" text-2xl font-bold">
                     ${" "}
                     {cartItems
                       .reduce((acc, item) => acc + item.qty * item.price, 0)
@@ -96,7 +96,7 @@ const Cart = () => {
                   </div>
 
                   <button
-                    className="bg-[#5f2476] mt-4 py-2 px-4 rounded-full text-lg w-full"
+                    className="btn-cart  bg-[#5f2476] mt-4 py-2 px-4 rounded-full text-lg w-full"
                     disabled={cartItems.length === 0}
                     onClick={checkoutHandler}
                   >

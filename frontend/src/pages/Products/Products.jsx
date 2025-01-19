@@ -166,7 +166,7 @@ const Product = () => {
             </div>
           </div>
 
-          <div className="mt-[5rem] container flex flex-wrap items-start justify-between ml-[10rem]">
+          <div className=" mt-[5rem] container flex flex-wrap items-start justify-between ml-[10rem]">
             <ProductTabs
               loadingProductReview={loadingProductReview}
               userInfo={userInfo}

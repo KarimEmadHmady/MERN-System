@@ -83,6 +83,8 @@ textarea {
   flex-direction: column;
 }
 
+
+
 @media (min-width:1070px) {
 
   .div-section-contact {
@@ -110,6 +112,38 @@ textarea {
   .main-header-p{
     color: #908495;
   }
+  .btn-cart ,.selection-cart {
+    width: auto;
+  }
+  .selection-cart-width{
+    width: 39px;
+  }
+  .btn-cart-width {
+    width: 20px;
+  }
+  .conta-favorite-products {
+    margin: 0;
+  }
+  .page-single-products {
+    padding: 10px;
+    margin: 0;
+  }
+  .page-product-propertes-one {
+    margin-right: 38px;
+    width: 185px !important;
+  }
+ #rating , #comment {
+  width:100% ; 
+ }
+ .page-dashboard {
+  width: 100%;
+ }
+ .page-dashboard-chart{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+ }
+
 }
 
 
