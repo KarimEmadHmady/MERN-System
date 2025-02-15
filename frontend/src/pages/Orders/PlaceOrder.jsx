@@ -10,30 +10,33 @@ import { clearCartItems } from "../../redux/features/cart/cartSlice";
 
 const PlaceOrder = () => {
   const navigate = useNavigate();
-
   const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
-  const [createOrder, { isLoading, error }] = useCreateOrderMutation();
+  const [createOrder, { isLoading, error }] = useCreateOrderMutation({
+    fixedCacheKey: "orders",
+  });
 
   useEffect(() => {
     if (!cart.shippingAddress.address) {
       navigate("/shipping");
     }
-  }, [cart.paymentMethod, cart.shippingAddress.address, navigate]);
-
-  const dispatch = useDispatch();
+  }, [cart.shippingAddress.address, navigate]);
 
   const placeOrderHandler = async () => {
     try {
+      const totalPrice = cart.itemsPrice; // Excluding tax and shipping
+
       const res = await createOrder({
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
-        paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
-        shippingPrice: cart.shippingPrice,
-        taxPrice: cart.taxPrice,
-        totalPrice: cart.totalPrice,
+        totalPrice,
+        paymentMethod: "PayPal",
       }).unwrap();
+      
+      
+      
       dispatch(clearCartItems());
       navigate(`/order/${res._id}`);
     } catch (error) {
@@ -96,40 +99,29 @@ const PlaceOrder = () => {
                 {cart.itemsPrice}
               </li>
               <li>
-                <span className="font-semibold mb-4">Shipping:</span> $
-                {cart.shippingPrice}
-              </li>
-              <li>
-                <span className="font-semibold mb-4">Tax:</span> $
-                {cart.taxPrice}
-              </li>
-              <li>
                 <span className="font-semibold mb-4">Total:</span> $
-                {cart.totalPrice}
+                {cart.itemsPrice}
               </li>
             </ul>
 
             {error && <Message variant="danger">{error.data.message}</Message>}
 
             <div>
-              <h2 className="text-2xl font-semibold mb-4">Shipping</h2>
+              <h2 className="text-2xl font-semibold mb-4">Order Information</h2>
               <p>
-                <strong>Address:</strong> {cart.shippingAddress.address},{" "}
-                {cart.shippingAddress.city} {cart.shippingAddress.postalCode},{" "}
-                {cart.shippingAddress.country}
-              </p>
-            </div>
+                <strong>Details:</strong>
 
-            <div>
-              <h2 className="text-2xl font-semibold mb-4">Payment Method</h2>
-              <strong>Method:</strong> {cart.paymentMethod}
+                <p>Serial Number: {cart.shippingAddress.address}</p>
+                <p>Product Name: {cart.shippingAddress.city} </p>
+                <p>Salesman: {cart.shippingAddress.country}</p>
+              </p>
             </div>
           </div>
 
           <button
             type="button"
             className="bg-[#5f2476] text-white py-2 px-4 rounded-full text-lg w-full mt-4"
-            disabled={cart.cartItems === 0}
+            disabled={cart.cartItems.length === 0}
             onClick={placeOrderHandler}
           >
             Place Order

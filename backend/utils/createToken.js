@@ -1,19 +1,21 @@
 import jwt from "jsonwebtoken";
 
-const generateToken = (res, userId) => {
+const createToken = (res, userId) => {
   const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
-    expiresIn: "30d",
+    expiresIn: "10h", // 🔥 صلاحية التوكن 10 ساعات
   });
 
-  // Set JWT as an HTTP-Only Cookie
+  // ✅ تأكد أن `res.cookie` متاح
+  if (!res || !res.cookie) {
+    throw new Error("Response object is invalid. Cannot set cookie.");
+  }
+
   res.cookie("jwt", token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV !== "development",
+    secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
-    maxAge: 30 * 24 * 60 * 60 * 1000,
+    maxAge: 10 * 60 * 60 * 1000, // 🔥 10 ساعات
   });
-
-  return token;
 };
 
-export default generateToken;
+export default createToken;

@@ -42,12 +42,12 @@ const AllProducts = () => {
                         </h5>
 
                         <p className="text-gray-400 text-xs">
-                          {moment(product.createdAt).format("MMMM Do YYYY")}
+                         Date of creation :  {moment(product.createdAt).format("MMMM Do YYYY")}
                         </p>
                       </div>
 
                       <p className="text-gray-400 xl:w-[30rem] lg:w-[30rem] md:w-[20rem] sm:w-[10rem] text-sm mb-4">
-                        {product?.description?.substring(0, 160)}...
+                       Serial Number: {product?.description?.substring(0, 160)}
                       </p>
 
                       <div className="flex justify-between">
@@ -72,7 +72,7 @@ const AllProducts = () => {
                             />
                           </svg>
                         </Link>
-                        <p>$ {product?.price}</p>
+                        <p>L.E {product?.price}</p>
                       </div>
                     </div>
                   </div>

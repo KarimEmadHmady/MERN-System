@@ -78,7 +78,7 @@ const AdminProductUpdate = () => {
       const formData = new FormData();
       formData.append("image", image);
       formData.append("name", name);
-      formData.append("description", description);
+      formData.append("serial number", description);
       formData.append("price", price);
       formData.append("category", category);
       formData.append("quantity", quantity);
@@ -208,8 +208,8 @@ const AdminProductUpdate = () => {
               </div>
 
               <label htmlFor="" className="my-5">
-                Description
-              </label>
+              serial number
+              </label>  
               <textarea
                 type="text"
                 className="p-2 mb-3 bg-[#101011]  border rounded-lg w-[95%] text-white"

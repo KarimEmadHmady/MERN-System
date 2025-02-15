@@ -40,14 +40,14 @@ const ProductCard = ({ p }) => {
           <p className="text-black font-semibold text-[#5f2476]">
             {p?.price?.toLocaleString("en-US", {
               style: "currency",
-              currency: "USD",
+              currency: "EGP",
             })}
           </p>
         </div>
 
         <p className="mb-3 font-normal text-[#CFCFCF]">
-          {p?.description?.substring(0, 60)} ...
-        </p>
+  Serial Number: {p?.description}..
+</p>
 
         <section className="flex justify-between items-center">
           <Link

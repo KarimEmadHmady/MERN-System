@@ -3,14 +3,19 @@ import User from "../models/userModel.js";
 import asyncHandler from "./asyncHandler.js";
 
 const authenticate = asyncHandler(async (req, res, next) => {
-  let token;
-
-  // Read JWT from the 'jwt' cookie
-  token = req.cookies.jwt;
+  let token = req.cookies.jwt;
 
   if (token) {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+      // التحقق من انتهاء صلاحية التوكن
+      const currentTime = Math.floor(Date.now() / 1000); // الوقت الحالي بالثواني
+      if (decoded.exp < currentTime) {
+        res.status(401);
+        throw new Error("Session expired. Please log in again.");
+      }
+
       req.user = await User.findById(decoded.userId).select("-password");
       next();
     } catch (error) {
@@ -31,4 +36,26 @@ const authorizeAdmin = (req, res, next) => {
   }
 };
 
-export { authenticate, authorizeAdmin };
+
+
+const protect = (req, res, next) => {
+  const token = req.cookies.jwt;
+
+  if (!token) {
+    return res.status(401).json({ message: "Session expired, please log in again" });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.clearCookie("jwt"); // حذف الكوكيز عند انتهاء صلاحية التوكن
+    res.status(401).json({ message: "Session expired, please log in again" });
+  }
+};
+
+export default protect;
+
+
+export { authenticate, authorizeAdmin , protect };

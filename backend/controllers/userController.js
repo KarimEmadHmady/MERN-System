@@ -2,9 +2,11 @@ import User from "../models/userModel.js";
 import asyncHandler from "../middlewares/asyncHandler.js";
 import bcrypt from "bcryptjs";
 import createToken from "../utils/createToken.js";
+import Session from "../models/Session.js";
+
 
 const createUser = asyncHandler(async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, location, userImage } = req.body;
 
   if (!username || !email || !password) {
     throw new Error("Please fill all the inputs.");
@@ -15,7 +17,7 @@ const createUser = asyncHandler(async (req, res) => {
 
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
-  const newUser = new User({ username, email, password: hashedPassword });
+  const newUser = new User({ username, email, password: hashedPassword, location, userImage });
 
   try {
     await newUser.save();
@@ -26,6 +28,8 @@ const createUser = asyncHandler(async (req, res) => {
       username: newUser.username,
       email: newUser.email,
       isAdmin: newUser.isAdmin,
+      location: newUser.location,
+      userImage: newUser.userImage,
     });
   } catch (error) {
     res.status(400);
@@ -33,33 +37,121 @@ const createUser = asyncHandler(async (req, res) => {
   }
 });
 
-const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
 
-  // console.log(email);
-  // console.log(password);
+/* const loginUser = async (req, res) => {
+  const { email, password, location, image } = req.body;
 
-  const existingUser = await User.findOne({ email });
+  try {
+    const user = await User.findOne({ email });
 
-  if (existingUser) {
-    const isPasswordValid = await bcrypt.compare(
-      password,
-      existingUser.password
-    );
+    if (user && (await bcrypt.compare(password, user.password))) {
+      const userIP = req.ip;
+      const userAgent = req.headers?.["user-agent"] || "Unknown";
 
-    if (isPasswordValid) {
-      createToken(res, existingUser._id);
-
-      res.status(201).json({
-        _id: existingUser._id,
-        username: existingUser.username,
-        email: existingUser.email,
-        isAdmin: existingUser.isAdmin,
+      // ✅ تسجيل بيانات الجلسة
+      const session = new Session({
+        user: user._id,
+        ip: userIP,
+        userAgent: userAgent,
+        location,
+        userImage: image,
       });
-      return;
+
+      await session.save();
+
+      // ✅ تمرير `res` إلى `createToken`
+      createToken(res, user._id);
+
+      res.json({
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        location,
+        image,
+      });
+    } else {
+      res.status(401).json({ message: "Invalid email or password" });
     }
+  } catch (err) {
+    console.error("🔴 Error in loginUser:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}; */
+
+const loginUser = async (req, res) => {
+  const { email, password, location, image } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (user && (await bcrypt.compare(password, user.password))) {
+      const userIP = req.ip;
+
+      // ✅ تسجيل بيانات الجلسة مع اسم المستخدم والإيميل بدلًا من `userAgent`
+      const session = new Session({
+        user: user._id,
+        ip: userIP,
+        username: user.username, // اسم المستخدم
+        email: user.email, // البريد الإلكتروني
+        location,
+        userImage: image,
+      });
+
+      await session.save();
+
+      // ✅ تمرير `res` إلى `createToken`
+      createToken(res, user._id);
+
+      res.json({
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        location,
+        image,
+      });
+    } else {
+      res.status(401).json({ message: "Invalid email or password" });
+    }
+  } catch (err) {
+    console.error("🔴 Error in loginUser:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
+const updateCurrentUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    user.username = req.body.username || user.username;
+    user.email = req.body.email || user.email;
+    user.location = req.body.location || user.location;
+    user.userImage = req.body.userImage || user.userImage;
+
+    if (req.body.password) {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(req.body.password, salt);
+      user.password = hashedPassword;
+    }
+
+    const updatedUser = await user.save();
+
+    res.json({
+      _id: updatedUser._id,
+      username: updatedUser.username,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      location: updatedUser.location,
+      userImage: updatedUser.userImage,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
   }
 });
+
 
 const logoutCurrentUser = asyncHandler(async (req, res) => {
   res.cookie("jwt", "", {
@@ -79,10 +171,13 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
   if (user) {
+    const sessions = await Session.find({ user: user._id }).sort({ loginTime: -1 });
+
     res.json({
       _id: user._id,
       username: user.username,
       email: user.email,
+      sessions, // إرسال بيانات الجلسات
     });
   } else {
     res.status(404);
@@ -90,32 +185,8 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
-const updateCurrentUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id);
 
-  if (user) {
-    user.username = req.body.username || user.username;
-    user.email = req.body.email || user.email;
 
-    if (req.body.password) {
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(req.body.password, salt);
-      user.password = hashedPassword;
-    }
-
-    const updatedUser = await user.save();
-
-    res.json({
-      _id: updatedUser._id,
-      username: updatedUser.username,
-      email: updatedUser.email,
-      isAdmin: updatedUser.isAdmin,
-    });
-  } else {
-    res.status(404);
-    throw new Error("User not found");
-  }
-});
 
 const deleteUserById = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);

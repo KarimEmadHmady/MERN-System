@@ -140,7 +140,7 @@ const ProductList = () => {
             </div>
 
             <label htmlFor="" className="my-5">
-              Description
+            Serial Number
             </label>
             <textarea
               type="text"

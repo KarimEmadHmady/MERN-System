@@ -85,6 +85,15 @@ const AdminMenu = () => {
               >
                 Manage Users
               </NavLink>
+              <NavLink
+                className="list-item py-2 px-3 block mb-5 hover:bg-[#2E2D2D] rounded-sm"
+                to="/admin/sessionTable"
+                style={({ isActive }) => ({
+                  color: isActive ? "greenyellow" : "white",
+                })}
+              >
+                 Users Session 
+              </NavLink>
             </li>
             <li>
               <NavLink

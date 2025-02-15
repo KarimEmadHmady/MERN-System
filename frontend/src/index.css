@@ -143,7 +143,36 @@ textarea {
   height: 100%;
   margin: 0;
  }
-
+ .page-info-order {
+  font-size: 15px;
+  margin: 0 8px;
+  width: auto;
+ }
+ .info-page-order{
+  display: flex;
+  justify-content: space-between;
+ }
+ .info-page-order-img {
+  width: 60px;
+ }
+.info-page-order-btn{
+  font-size: 9px;
+  width: auto;
+}
+.info-page-order-id {
+  display: none;
+}
+.info-page-order-row {
+    display: flex;
+    justify-content: space-between;
+}
+.login-page-img{
+  width: auto;
+  height: auto;
+}
+.page-login-container {
+  padding: 10px;
+}
 }
 
 
@@ -199,9 +228,9 @@ textarea {
     margin:0 ;
     color: white;
   }
-  .description-curse {
+/*   .description-curse {
     visibility: hidden;
-  }
+  } */
   .container-shop-header {
     display: flex;
     justify-content: space-around;
@@ -239,5 +268,3 @@ textarea {
   }
 
 }
-
-

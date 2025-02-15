@@ -96,10 +96,11 @@ const ProductDetails = () => {
             <div className="flex flex-col justify-between">
               <h2 className="text-2xl font-semibold">{product.name}</h2>
               <p className="my-4 xl:w-[35rem] lg:w-[35rem] md:w-[30rem] text-[#B0B0B0]">
-                {product.description}
+  Serial Number:   {product.description} 
               </p>
 
-              <p className="text-5xl my-4 font-extrabold">$ {product.price}</p>
+
+              <p className="text-5xl my-4 font-extrabold">L.E {product.price}</p>
 
               <div className="page-product-propertes flex items-center justify-between w-[20rem]">
                 <div className="page-product-propertes-one one">
@@ -109,7 +110,7 @@ const ProductDetails = () => {
                   </h1>
                   <h1 className="flex items-center mb-6 w-[20rem]">
                     <FaClock className="mr-2 text-white" /> Added:{" "}
-                    {moment(product.createAt).fromNow()}
+                    {moment(product.createdAt).format("YYYY-MM-DD HH:mm:ss")}
                   </h1>
                   <h1 className="flex items-center mb-6">
                     <FaStar className="mr-2 text-white" /> Reviews:{" "}

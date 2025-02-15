@@ -11,7 +11,7 @@ import {
   updateUserById,
 } from "../controllers/userController.js";
 
-import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
+import { authenticate, authorizeAdmin , protect } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
@@ -20,13 +20,22 @@ router
   .post(createUser)
   .get(authenticate, authorizeAdmin, getAllUsers);
 
-router.post("/auth", loginUser);
+  router.post("/auth", (req, res) => {
+    const { email, password, location, image } = req.body; // 🟢 استقبال الموقع والصورة
+    
+    // إرسال البيانات إلى `loginUser` في `userController.js`
+    loginUser({ body: { email, password, location, image } }, res);
+});
+
+
 router.post("/logout", logoutCurrentUser);
+
+
 
 router
   .route("/profile")
   .get(authenticate, getCurrentUserProfile)
-  .put(authenticate, updateCurrentUserProfile);
+  .put(authenticate, updateCurrentUserProfile) , protect;
 
 // ADMIN ROUTES 👇
 router

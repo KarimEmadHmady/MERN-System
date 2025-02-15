@@ -41,7 +41,7 @@ const updateProductDetails = asyncHandler(async (req, res) => {
       case !brand:
         return res.json({ error: "Brand is required" });
       case !description:
-        return res.json({ error: "Description is required" });
+        return res.json({ error: "serial number is required" });
       case !price:
         return res.json({ error: "Price is required" });
       case !category:

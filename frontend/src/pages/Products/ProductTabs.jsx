@@ -9,7 +9,7 @@ const ProductTabs = ({
   loadingProductReview,
   userInfo,
   submitHandler,
-  rating,
+  rating, 
   setRating,
   comment,
   setComment,

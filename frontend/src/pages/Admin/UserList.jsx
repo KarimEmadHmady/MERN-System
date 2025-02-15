@@ -1,3 +1,5 @@
+
+
 import { useEffect, useState } from "react";
 import { FaTrash, FaEdit, FaCheck, FaTimes } from "react-icons/fa";
 import Message from "../../components/Message";
@@ -15,19 +17,18 @@ const UserList = () => {
   const { data: users, refetch, isLoading, error } = useGetUsersQuery();
 
   const [deleteUser] = useDeleteUserMutation();
+  const [updateUser] = useUpdateUserMutation();
 
   const [editableUserId, setEditableUserId] = useState(null);
   const [editableUserName, setEditableUserName] = useState("");
   const [editableUserEmail, setEditableUserEmail] = useState("");
-
-  const [updateUser] = useUpdateUserMutation();
 
   useEffect(() => {
     refetch();
   }, [refetch]);
 
   const deleteHandler = async (id) => {
-    if (window.confirm("Are you sure")) {
+    if (window.confirm("Are you sure?")) {
       try {
         await deleteUser(id);
         refetch();
@@ -76,6 +77,7 @@ const UserList = () => {
                 <th className="px-4 py-2 text-left">NAME</th>
                 <th className="px-4 py-2 text-left">EMAIL</th>
                 <th className="px-4 py-2 text-left">ADMIN</th>
+                <th className="px-4 py-2 text-left">📅 CREATED AT</th>
                 <th className="px-4 py-2"></th>
               </tr>
             </thead>
@@ -149,6 +151,15 @@ const UserList = () => {
                     )}
                   </td>
                   <td className="px-4 py-2">
+                    {user.createdAt
+                      ? new Date(user.createdAt).toLocaleString("en-US", {
+                          timeZone: "Africa/Cairo",
+                          dateStyle: "medium",
+                          timeStyle: "short",
+                        })
+                      : "N/A"}
+                  </td>
+                  <td className="px-4 py-2">
                     {!user.isAdmin && (
                       <div className="flex">
                         <button
@@ -171,3 +182,6 @@ const UserList = () => {
 };
 
 export default UserList;
+
+
+

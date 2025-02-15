@@ -62,10 +62,10 @@ const ProductCarousel = () => {
                   <div className="one">
                     <div className="price-name-curs">
                     <h2>{name}</h2>
-                    <p className="price-curs"> $ {price}</p> 
+                    <p className="price-curs"> L.E {price}</p> 
                     </div>
                     <p className="description-curse w-[25rem]" >
-                      {description.substring(0, 170)} ...
+                    serial number: {description}.
                     </p>
                   </div>
 
@@ -76,7 +76,8 @@ const ProductCarousel = () => {
                       </h1>
                       <h1 className="flex items-center mb-6">
                         <FaClock className="mr-2 text-white" /> Added:{" "}
-                        {moment(createdAt).fromNow()}
+                      
+                        {moment(createdAt).format("YYYY-MM-DD HH:mm:ss")}
                       </h1>
                       <h1 className="flex items-center mb-6">
                         <FaStar className="mr-2 text-white" /> Reviews:
