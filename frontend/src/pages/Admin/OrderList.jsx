@@ -67,7 +67,7 @@ const OrderList = () => {
 
                 <td>
                   <Link to={`/order/${order._id}`}>
-                    <button>More</button>
+                    <button className="bg-[#5f2476] text-white py-2 px-4 rounded hover:bg-[#5f2476]">More</button>
                   </Link>
                 </td>
               </tr>

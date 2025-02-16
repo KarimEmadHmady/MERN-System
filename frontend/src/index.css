@@ -82,7 +82,11 @@ textarea {
   flex-wrap: wrap;
   flex-direction: column;
 }
+ .line-borderr {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
 
+ }
 
 
 @media (min-width:1070px) {
@@ -172,6 +176,40 @@ textarea {
 }
 .page-login-container {
   padding: 10px;
+}
+table {
+  font-size: 12px !important ; 
+}
+.class-page-login-reg {
+  width: 20rem !important;
+}
+.contproductlist-page input , .select-Category {
+  
+  width: 100%;
+}
+.two {
+  margin-left: 0 !important;
+}
+.counter-in-stock-pageprolist {
+  flex-direction: column;
+}
+.cargorylist-page {
+  margin: 0;
+}
+.image-allproduct-page{
+  width: 100px !important ; 
+  height: 97px !important ; 
+}
+.font-allproduct-page{
+  font-size: 15px;
+  margin-right: 40px;
+}
+.page-Sessiontable {
+  padding: 0 !important;
+  font-size: 15px !important;
+}
+.page-Sessiontable  img{
+  height: 50px !important;
 }
 }
 

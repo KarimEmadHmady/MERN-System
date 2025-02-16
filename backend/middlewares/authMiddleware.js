@@ -1,11 +1,9 @@
-import jwt from "jsonwebtoken";
-import User from "../models/userModel.js";
-import asyncHandler from "./asyncHandler.js";
 
-const authenticate = asyncHandler(async (req, res, next) => {
-  let token = req.cookies.jwt;
 
-  if (token) {
+/* const authenticate = asyncHandler(async (req, res, next) => {
+let token = req.cookies.jwt;
+
+if (token) {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
@@ -19,6 +17,38 @@ const authenticate = asyncHandler(async (req, res, next) => {
       req.user = await User.findById(decoded.userId).select("-password");
       next();
     } catch (error) {
+      res.status(401);
+      throw new Error("Not authorized, token failed.");
+    }
+  } else {
+    res.status(401);
+    throw new Error("Not authorized, no token.");
+  }
+}); */
+
+import jwt from "jsonwebtoken";
+import User from "../models/userModel.js";
+import asyncHandler from "./asyncHandler.js";
+
+const authenticate = asyncHandler(async (req, res, next) => {
+  let token = req.cookies.jwt;
+
+  if (token) {
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+      // التحقق من انتهاء صلاحية التوكن
+      const currentTime = Math.floor(Date.now() / 1000);
+      if (decoded.exp < currentTime) {
+        res.clearCookie("jwt"); // 🔥 حذف التوكن عند انتهاء صلاحيته
+        res.status(401);
+        throw new Error("Session expired. Please log in again.");
+      }
+
+      req.user = await User.findById(decoded.userId).select("-password");
+      next();
+    } catch (error) {
+      res.clearCookie("jwt"); // حذف الكوكيز عند فشل التحقق
       res.status(401);
       throw new Error("Not authorized, token failed.");
     }

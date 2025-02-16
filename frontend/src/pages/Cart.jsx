@@ -51,10 +51,10 @@ const Cart = () => {
 
                     <div className="mt-2 text-white">{item.brand}</div>
                     <p className="my-4 xl:w-[35rem] lg:w-[35rem] md:w-[30rem] text-[#B0B0B0]">
-  Serial Number:   {item.description} 
+                       Serial Number:   {item.description} 
               </p>
                     <div className="mt-2 text-white font-bold">
-                      $ {item.price}
+                      L.E {item.price}
                     </div>
                   </div>
 
@@ -92,7 +92,7 @@ const Cart = () => {
                   </h2>
 
                   <div className=" text-2xl font-bold">
-                    ${" "}
+                    L.E {" "}
                     {cartItems
                       .reduce((acc, item) => acc + item.qty * item.price, 0)
                       .toFixed(2)}

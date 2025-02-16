@@ -59,7 +59,6 @@ const PlaceOrder = () => {
                   <td className="px-1 py-2 text-left align-top">Image</td>
                   <td className="px-1 py-2 text-left">Product</td>
                   <td className="px-1 py-2 text-left">Quantity</td>
-                  <td className="px-1 py-2 text-left">Price</td>
                   <td className="px-1 py-2 text-left">Total</td>
                 </tr>
               </thead>
@@ -79,9 +78,8 @@ const PlaceOrder = () => {
                       <Link to={`/product/${item.product}`}>{item.name}</Link>
                     </td>
                     <td className="p-2">{item.qty}</td>
-                    <td className="p-2">{item.price.toFixed(2)}</td>
                     <td className="p-2">
-                      $ {(item.qty * item.price).toFixed(2)}
+                      L.E {(item.qty * item.price).toFixed(2)}
                     </td>
                   </tr>
                 ))}
@@ -94,20 +92,20 @@ const PlaceOrder = () => {
           <h2 className="text-2xl font-semibold mb-5">Order Summary</h2>
           <div className="flex justify-between flex-wrap p-8 bg-[#181818]">
             <ul className="text-lg">
+            <li>
+              <span className="font-semibold mb-4">Number of Items: </span> {cart.cartItems.reduce((acc, item) => acc + item.qty, 0)}
+            </li>
+
               <li>
-                <span className="font-semibold mb-4">Items:</span> $
-                {cart.itemsPrice}
-              </li>
-              <li>
-                <span className="font-semibold mb-4">Total:</span> $
-                {cart.itemsPrice}
+                <span className="font-semibold mb-4">Total: </span> 
+                 L.E {cart.itemsPrice}
               </li>
             </ul>
 
             {error && <Message variant="danger">{error.data.message}</Message>}
 
             <div>
-              <h2 className="text-2xl font-semibold mb-4">Order Information</h2>
+              <h2 className="text-2xl font-semibold mb-1 ">Order Information</h2>
               <p>
                 <strong>Details:</strong>
 

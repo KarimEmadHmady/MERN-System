@@ -2,8 +2,43 @@ import { Outlet } from "react-router-dom";
 import Navigation from "./pages/Auth/Navigation";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { logout } from "./redux/features/auth/authSlice"; 
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const checkExpiration = () => {
+      const expirationTime = localStorage.getItem("expirationTime");
+
+      if (expirationTime && new Date().getTime() > expirationTime) {
+        dispatch(logout());
+      }
+    };
+
+    // ✅ ضبط تسجيل الخروج عند انتهاء المهلة مباشرة
+    const expirationTime = localStorage.getItem("expirationTime");
+    if (expirationTime) {
+      const timeRemaining = expirationTime - new Date().getTime();
+
+      if (timeRemaining > 0) {
+        const timeout = setTimeout(() => {
+          dispatch(logout());
+        }, timeRemaining);
+
+        return () => clearTimeout(timeout);
+      } else {
+        dispatch(logout());
+      }
+    }
+
+    const interval = setInterval(checkExpiration, 60 * 60 * 1000); 
+
+
+    return () => clearInterval(interval);
+  }, [dispatch]);
 
   return (
     <>

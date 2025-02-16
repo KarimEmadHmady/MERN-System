@@ -52,7 +52,7 @@ const Register = () => {
       <div className="mr-[4rem] mt-[5rem]">
         <h1 className="text-2xl font-semibold mb-4">Register</h1>
 
-        <form onSubmit={submitHandler} className="container w-[40rem]">
+        <form onSubmit={submitHandler} className="container w-[40rem] class-page-login-reg">
           <div className="my-[2rem]">
             <label
               htmlFor="name"

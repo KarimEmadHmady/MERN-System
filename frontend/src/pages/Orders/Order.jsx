@@ -79,7 +79,7 @@ const Order = () => {
                     <th className="p-2">Product</th>
                     <th className="p-2">serial number	</th>
                     <th className="p-2 text-center">Quantity</th>
-                    <th className="p-2">Unit Price</th>
+                    <th className="p-2">Date</th>
                     <th className="p-2">Total</th>
                   </tr>
                 </thead>
@@ -101,7 +101,19 @@ const Order = () => {
                       <td className="p-2 text-center">{item.description}</td>
 
                       <td className="p-2 text-center">{item.qty}</td>
-                      <td className="p-2 text-center">{item.price}</td>
+                      <td className="p-2 text-center">
+                        {new Date(order.createdAt).toLocaleString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            hour12: true,
+                        })}
+                      </td>
+
+
+
                       
                       <td className="p-2 text-center">
                         L.E {(item.qty * item.price).toFixed(2)}

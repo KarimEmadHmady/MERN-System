@@ -16,7 +16,7 @@ const AllProducts = () => {
 
   return (
     <>
-      <div className="container mx-[9rem]">
+      <div className="container mx-[9rem] cargorylist-page">
         <div className="flex flex-col  md:flex-row">
           <div className="p-3">
             <div className="ml-[2rem] text-xl font-bold h-12">
@@ -29,15 +29,15 @@ const AllProducts = () => {
                   to={`/admin/product/update/${product._id}`}
                   className="block mb-4 overflow-hidden"
                 >
-                  <div className="flex">
+                  <div className="flex line-borderr">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-[10rem] object-cover"
+                      className="w-[10rem] object-cover image-allproduct-page"
                     />
                     <div className="p-4 flex flex-col justify-around">
                       <div className="flex justify-between">
-                        <h5 className="text-xl font-semibold mb-2">
+                        <h5 className="text-xl font-semibold mb-2 font-allproduct-page">
                           {product?.name}
                         </h5>
 
@@ -75,10 +75,12 @@ const AllProducts = () => {
                         <p>L.E {product?.price}</p>
                       </div>
                     </div>
+                    
                   </div>
                 </Link>
               ))}
             </div>
+          
           </div>
           <div className="md:w-1/4 p-3 mt-2">
             <AdminMenu />

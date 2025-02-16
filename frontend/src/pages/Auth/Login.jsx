@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import { useLoginMutation } from "../../redux/api/usersApiSlice";
-import { setCredentials } from "../../redux/features/auth/authSlice";
+import { setCredentials , logout  } from "../../redux/features/auth/authSlice";
 import { toast } from "react-toastify";
 import Webcam from "react-webcam";
 
@@ -67,6 +67,7 @@ const Login = () => {
     try {
       const res = await login({ email, password, image, location }).unwrap();
       dispatch(setCredentials({ ...res }));
+      localStorage.setItem("loginTime", Date.now());
       navigate(redirect);
     } catch (err) {
       console.error("🔴 خطأ في تسجيل الدخول:", err);
@@ -74,13 +75,29 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    if (userInfo) {
+      const loginTime = localStorage.getItem("loginTime");
+      const currentTime = Date.now();
+      const tenHours = 10 * 60 * 60 * 1000; // 10 ساعات
+  
+      if (loginTime && currentTime - loginTime >= tenHours) {
+        dispatch(logout());
+        toast.info("انتهت جلستك، يرجى تسجيل الدخول مرة أخرى.");
+        navigate("/login");
+      }
+    }
+  }, [userInfo, dispatch, navigate]);
+  
+  
+
   return (
     <div>
       <section className="pl-[10rem] flex flex-wrap page-login-container">
         <div className="mr-[4rem] mt-[5rem]">
           <h1 className="text-2xl font-semibold mb-4">Sign In</h1>
 
-          <form onSubmit={submitHandler} className="container w-[40rem]">
+          <form onSubmit={submitHandler} className="container w-[40rem] class-page-login-reg">
             <div className="my-[2rem]">
               <label htmlFor="email" className="block text-sm font-medium text-white">
                 Email Address
@@ -168,3 +185,5 @@ const Login = () => {
 };
 
 export default Login;
+
+
