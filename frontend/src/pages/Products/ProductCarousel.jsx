@@ -43,7 +43,7 @@ const ProductCarousel = () => {
               _id,
               name,
               price,
-              description,
+              serialnumber,
               brand,
               createdAt,
               numReviews,
@@ -64,8 +64,8 @@ const ProductCarousel = () => {
                     <h2>{name}</h2>
                     <p className="price-curs"> L.E {price}</p> 
                     </div>
-                    <p className="description-curse w-[25rem]" >
-                    serial number: {description}.
+                    <p className="serialnumber-curse w-[25rem]" >
+                    serial number: {serialnumber}.
                     </p>
                   </div>
 

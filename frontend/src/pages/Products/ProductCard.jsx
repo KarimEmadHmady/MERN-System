@@ -46,7 +46,7 @@ const ProductCard = ({ p }) => {
         </div>
 
         <p className="mb-3 font-normal text-[#CFCFCF]">
-  Serial Number: {p?.description}..
+  Serial Number: {p?.serialnumber}..
 </p>
 
         <section className="flex justify-between items-center">

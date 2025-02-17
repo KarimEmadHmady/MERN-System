@@ -98,7 +98,7 @@ const Order = () => {
                       <td className="p-2">
                         <Link to={`/product/${item.product}`}>{item.name}</Link>
                       </td>
-                      <td className="p-2 text-center">{item.description}</td>
+                      <td className="p-2 text-center">{item.serialnumber}</td>
 
                       <td className="p-2 text-center">{item.qty}</td>
                       <td className="p-2 text-center">

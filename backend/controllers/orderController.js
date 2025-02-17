@@ -52,7 +52,7 @@
         return {
           ...itemFromClient,
           price: matchingItemFromDB.price,
-          description: matchingItemFromDB.description,
+          serialnumber: matchingItemFromDB.serialnumber,
         };
         
       });
@@ -108,7 +108,7 @@
         return {
           ...itemFromClient,
           price: matchingItemFromDB.price,
-          description: matchingItemFromDB.description,
+          serialnumber: matchingItemFromDB.serialnumber,
         };
       });
   

@@ -11,7 +11,7 @@ import AdminMenu from "./AdminMenu";
 const ProductList = () => {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [serialnumber, setserialnumber] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -30,7 +30,7 @@ const ProductList = () => {
       const productData = new FormData();
       productData.append("image", image);
       productData.append("name", name);
-      productData.append("description", description);
+      productData.append("serialnumber", serialnumber);
       productData.append("price", price);
       productData.append("category", category);
       productData.append("quantity", quantity);
@@ -141,8 +141,8 @@ const ProductList = () => {
             <textarea
               type="text"
               className="p-2 mb-3 bg-[#101011] border rounded-lg w-[95%] text-white"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={serialnumber}
+              onChange={(e) => setserialnumber(e.target.value)}
             ></textarea>
 
             <div className="flex justify-between counter-in-stock-pageprolist">

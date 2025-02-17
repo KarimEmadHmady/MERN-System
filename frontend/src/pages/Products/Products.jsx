@@ -94,7 +94,7 @@ const Product = () => {
               <h2 className="text-2xl font-semibold">{product.name}</h2>
 
               <p className="my-4 xl:w-[35rem] lg:w-[35] md:w-[30rem] text-[#B0B0B0]">
-                {product.description}
+                {product.serialnumber}
               </p>
               <p className="text-5xl my-4 font-extrabold">L.E{product.price}</p>
               {/* --------------------------------------------------- */}

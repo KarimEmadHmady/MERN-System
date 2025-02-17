@@ -51,7 +51,7 @@ const Cart = () => {
 
                     <div className="mt-2 text-white">{item.brand}</div>
                     <p className="my-4 xl:w-[35rem] lg:w-[35rem] md:w-[30rem] text-[#B0B0B0]">
-                       Serial Number:   {item.description} 
+                       Serial Number:   {item.serialnumber} 
               </p>
                     <div className="mt-2 text-white font-bold">
                       L.E {item.price}

@@ -36,10 +36,10 @@ const UserOrder = () => {
                   className="w-[6rem] mb-5 info-page-order-img"
                 />
 
-                {/* <td className="py-2 info-page-order-id">{order.orderItems[0].description}</td> */}
+                {/* <td className="py-2 info-page-order-id">{order.orderItems[0].serialnumber}</td> */}
               <td className="py-2 info-page-order-id">
                 {order.orderItems.map((item, index) => (
-                  <div key={index}>{item.description}</div>
+                  <div key={index}>{item.serialnumber}</div>
                 ))}
               </td>
 

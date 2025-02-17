@@ -9,11 +9,11 @@ const orderSchema = mongoose.Schema(
         qty: { type: Number, required: true },
         image: { type: String, required: true },
         price: { type: Number, required: true },
-        description: { type: String, required: true },
-        brand: { type: String, required: true },
+        serialnumber: { type: String, required: true },
+        brand: { type: String, required: false },
         product: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "Product", // جعل `product` اختيارياً بحذف `required: true`
+          ref: "Product", 
         },
       },
     ],

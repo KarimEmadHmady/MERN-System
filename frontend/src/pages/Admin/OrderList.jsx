@@ -43,7 +43,7 @@ const OrderList = () => {
                   />
                 </td>
                 <td>{order.orderItems.map((item, index) => (
-                  <div key={index}>{item.description }</div>
+                  <div key={index}>{item.serialnumber }</div>
                 ))}</td>
 
                 <td>{order.user ? order.user.username : "N/A"}</td>

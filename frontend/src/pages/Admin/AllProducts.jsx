@@ -47,7 +47,7 @@ const AllProducts = () => {
                       </div>
 
                       <p className="text-gray-400 xl:w-[30rem] lg:w-[30rem] md:w-[20rem] sm:w-[10rem] text-sm mb-4">
-                       Serial Number: {product?.description?.substring(0, 160)}
+                       Serial Number: {product?.serialnumber?.substring(0, 160)}
                       </p>
 
                       <div className="flex justify-between">

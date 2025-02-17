@@ -96,7 +96,7 @@ const ProductDetails = () => {
             <div className="flex flex-col justify-between">
               <h2 className="text-2xl font-semibold">{product.name}</h2>
               <p className="my-4 xl:w-[35rem] lg:w-[35rem] md:w-[30rem] text-[#B0B0B0]">
-  Serial Number:   {product.description} 
+  Serial Number:   {product.serialnumber} 
               </p>
 
 

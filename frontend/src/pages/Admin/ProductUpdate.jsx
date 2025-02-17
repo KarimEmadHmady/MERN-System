@@ -19,8 +19,8 @@ const AdminProductUpdate = () => {
 
   const [image, setImage] = useState(productData?.image || "");
   const [name, setName] = useState(productData?.name || "");
-  const [description, setDescription] = useState(
-    productData?.description || ""
+  const [serialnumber, setserialnumber] = useState(
+    productData?.serialnumber || ""
   );
   const [price, setPrice] = useState(productData?.price || "");
   const [category, setCategory] = useState(productData?.category || "");
@@ -45,7 +45,7 @@ const AdminProductUpdate = () => {
   useEffect(() => {
     if (productData && productData._id) {
       setName(productData.name);
-      setDescription(productData.description);
+      setserialnumber(productData.serialnumber);
       setPrice(productData.price);
       setCategory(productData.category?._id);
       setQuantity(productData.quantity);
@@ -78,7 +78,7 @@ const AdminProductUpdate = () => {
       const formData = new FormData();
       formData.append("image", image);
       formData.append("name", name);
-      formData.append("serial number", description);
+      formData.append("serial number", serialnumber);
       formData.append("price", price);
       formData.append("category", category);
       formData.append("quantity", quantity);
@@ -213,8 +213,8 @@ const AdminProductUpdate = () => {
               <textarea
                 type="text"
                 className="p-2 mb-3 bg-[#101011]  border rounded-lg w-[95%] text-white"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                value={serialnumber}
+                onChange={(e) => setserialnumber(e.target.value)}
               />
 
               <div className="flex justify-between">
