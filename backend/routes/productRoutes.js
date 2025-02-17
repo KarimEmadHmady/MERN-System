@@ -14,6 +14,7 @@ import {
   fetchTopProducts,
   fetchNewProducts,
   filterProducts,
+  updateBrandBySerialNumber
 } from "../controllers/productController.js";
 import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
 import checkId from "../middlewares/checkId.js";
@@ -34,6 +35,9 @@ router
   .get(fetchProductById)
   .put(authenticate, authorizeAdmin, formidable(), updateProductDetails)
   .delete(authenticate, authorizeAdmin, removeProduct);
+
+  router.route("/update-brand").put(authenticate, updateBrandBySerialNumber);
+
 
 router.route("/filtered-products").post(filterProducts);
 

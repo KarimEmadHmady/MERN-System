@@ -1,30 +1,5 @@
 
 
-/* const authenticate = asyncHandler(async (req, res, next) => {
-let token = req.cookies.jwt;
-
-if (token) {
-    try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-      // التحقق من انتهاء صلاحية التوكن
-      const currentTime = Math.floor(Date.now() / 1000); // الوقت الحالي بالثواني
-      if (decoded.exp < currentTime) {
-        res.status(401);
-        throw new Error("Session expired. Please log in again.");
-      }
-
-      req.user = await User.findById(decoded.userId).select("-password");
-      next();
-    } catch (error) {
-      res.status(401);
-      throw new Error("Not authorized, token failed.");
-    }
-  } else {
-    res.status(401);
-    throw new Error("Not authorized, no token.");
-  }
-}); */
 
 import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
