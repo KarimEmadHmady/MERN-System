@@ -3,14 +3,12 @@ import Product from "../models/productModel.js";
 
 const addProduct = asyncHandler(async (req, res) => {
   try {
-    const { name, description, price, category, quantity, brand } = req.fields;
+    const { name, description, price, category, quantity} = req.fields; 
 
     // Validation
     switch (true) {
       case !name:
         return res.json({ error: "Name is required" });
-      case !brand:
-        return res.json({ error: "Brand is required" });
       case !description:
         return res.json({ error: "Description is required" });
       case !price:
@@ -32,14 +30,12 @@ const addProduct = asyncHandler(async (req, res) => {
 
 const updateProductDetails = asyncHandler(async (req, res) => {
   try {
-    const { name, description, price, category, quantity, brand } = req.fields;
+    const { name, description, price, category, quantity } = req.fields; 
 
     // Validation
     switch (true) {
       case !name:
         return res.json({ error: "Name is required" });
-      case !brand:
-        return res.json({ error: "Brand is required" });
       case !description:
         return res.json({ error: "serial number is required" });
       case !price:

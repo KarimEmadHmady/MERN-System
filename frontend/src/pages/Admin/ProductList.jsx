@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   useCreateProductMutation,
@@ -15,7 +15,6 @@ const ProductList = () => {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [brand, setBrand] = useState("");
   const [stock, setStock] = useState(0);
   const [imageUrl, setImageUrl] = useState(null);
   const navigate = useNavigate();
@@ -35,7 +34,6 @@ const ProductList = () => {
       productData.append("price", price);
       productData.append("category", category);
       productData.append("quantity", quantity);
-      productData.append("brand", brand);
       productData.append("countInStock", stock);
 
       const { data } = await createProduct(productData);
@@ -65,6 +63,13 @@ const ProductList = () => {
       toast.error(error?.data?.message || error.error);
     }
   };
+
+  useEffect(() => {
+    if (categories?.length > 0) {
+      setCategory(categories[0]._id);
+    }
+  }, [categories]);
+
 
   return (
     <div className="container xl:mx-[9rem] sm:mx-[0] contproductlist-page">
@@ -128,15 +133,6 @@ const ProductList = () => {
                   onChange={(e) => setQuantity(e.target.value)}
                 />
               </div>
-              <div className="two ml-10 ">
-                <label htmlFor="name block">Brand</label> <br />
-                <input
-                  type="text"
-                  className="p-4 mb-3 w-[30rem] border rounded-lg bg-[#101011] text-white"
-                  value={brand}
-                  onChange={(e) => setBrand(e.target.value)}
-                />
-              </div>
             </div>
 
             <label htmlFor="" className="my-5">
@@ -159,12 +155,12 @@ const ProductList = () => {
                   onChange={(e) => setStock(e.target.value)}
                 />
               </div>
-
               <div>
-                <label htmlFor="">Category</label> <br />
+                <label htmlFor="category">Category</label> <br />
                 <select
-                  placeholder="Choose Category"
+                  id="category"
                   className="p-4 mb-3 w-[30rem] border rounded-lg bg-[#101011] text-white select-Category"
+                  value={category}
                   onChange={(e) => setCategory(e.target.value)}
                 >
                   {categories?.map((c) => (
@@ -174,6 +170,7 @@ const ProductList = () => {
                   ))}
                 </select>
               </div>
+
             </div>
 
             <button
