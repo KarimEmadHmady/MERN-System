@@ -21,6 +21,7 @@ const authenticate = asyncHandler(async (req, res, next) => {
       }
 
       req.user = await User.findById(decoded.userId).select("-password");
+      
       next();
     } catch (error) {
       res.clearCookie("jwt"); // حذف الكوكيز عند فشل التحقق
@@ -32,6 +33,10 @@ const authenticate = asyncHandler(async (req, res, next) => {
     throw new Error("Not authorized, no token.");
   }
 });
+ 
+
+
+
 
 const authorizeAdmin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {

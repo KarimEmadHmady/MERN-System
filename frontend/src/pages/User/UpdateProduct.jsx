@@ -10,23 +10,35 @@ const UpdateProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+  
+    console.log("Sending data:", { serialnumber: serialNumber, brand });
+  
     try {
-        const response = await axios.put(
-            `/api/products/update-brand`, // تعديل المسار هنا
-            { serialnumber: serialNumber, brand }
-          );
-          
-
+      const response = await axios.put(
+        `/api/products/update-brand`,
+        { serialnumber: serialNumber, brand },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+  
+      console.log("Response:", response.data);
+  
       if (response.status === 200) {
-        toast.success('Brand updated successfully!');
+        toast.success("Brand updated successfully!");
       }
     } catch (error) {
-      toast.error('Error updating brand!');
+      console.error("Axios error:", error.response?.data);
+      toast.error(error.response?.data?.message || "Error updating brand!");
     } finally {
       setLoading(false);
     }
   };
+  
+  
 
   return (
     <div className="max-w-xl mx-auto p-6 bg-white rounded-lg shadow-lg">

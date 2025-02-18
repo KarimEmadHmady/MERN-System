@@ -126,7 +126,7 @@ const Navigation = () => {
 
         {dropdownOpen && userInfo && (
           <ul
-            className={`  absolute right-4 mt-2 mr-14 space-y-2 bg-[#000] text-[#5f2476] ${
+            className={`  absolute right-4 mt-[0.5rem] mr-14 space-y-2 bg-[#000] text-[#5f2476] ${
               !userInfo.isAdmin ? "-top-20" : "-top-80"
             } `}
           >
@@ -175,6 +175,11 @@ const Navigation = () => {
               </>
             )}
 
+            <li>
+              <Link to="/addserialNumber" className="block px-4 py-2 hover:bg-gray-100">
+                Add Product
+              </Link>
+            </li>
             <li>
               <Link to="/profile" className="block px-4 py-2 hover:bg-gray-100">
                 Profile

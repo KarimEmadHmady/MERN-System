@@ -19,6 +19,8 @@ import {
 import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
 import checkId from "../middlewares/checkId.js";
 
+router.route("/update-brand").put(authenticate, updateBrandBySerialNumber);
+
 router
   .route("/")
   .get(fetchProducts)
@@ -36,7 +38,6 @@ router
   .put(authenticate, authorizeAdmin, formidable(), updateProductDetails)
   .delete(authenticate, authorizeAdmin, removeProduct);
 
-  router.route("/update-brand").put(authenticate, updateBrandBySerialNumber);
 
 
 router.route("/filtered-products").post(filterProducts);
