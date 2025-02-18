@@ -211,6 +211,9 @@ table {
 .page-Sessiontable  img{
   height: 50px !important;
 }
+.brand-serialnumber{
+  margin: 150px 15px;
+}
 }
 
 
@@ -266,9 +269,6 @@ table {
     margin:0 ;
     color: white;
   }
-/*   .serialnumber-curse {
-    visibility: hidden;
-  } */
   .container-shop-header {
     display: flex;
     justify-content: space-around;
@@ -303,6 +303,9 @@ table {
     flex-direction: row-reverse;
     cursor: pointer;
     
+  }
+  .navi-users {
+    margin-top: 0 !important;
   }
 
 }

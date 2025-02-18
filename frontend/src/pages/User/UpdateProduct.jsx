@@ -25,10 +25,10 @@ const UpdateProduct = () => {
         }
       );
   
-      console.log("Response:", response.data);
-  
       if (response.status === 200) {
-        toast.success("Brand updated successfully!");
+        toast.success("Brand And product Add successfully!");
+        setSerialNumber(''); 
+        setBrand(''); 
       }
     } catch (error) {
       console.error("Axios error:", error.response?.data);
@@ -41,16 +41,17 @@ const UpdateProduct = () => {
   
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-3xl font-semibold text-center mb-6">Update Brand by Serial Number</h2>
+    <div className="brand-serialnumber max-w-xl mx-auto p-6 bg-black rounded-lg shadow-lg mt-[150px]  ">
+      <h2 className="text-3xl font-semibold text-center mb-6">Add Product And Brand Name by Serial Number</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="serialNumber" className="block text-lg font-medium text-gray-700">
+          <label htmlFor="serialNumber" className="block text-lg font-medium text-white-700">
             Serial Number
           </label>
           <input
             type="text"
             id="serialNumber"
+            placeholder='Enter Serial Number'
             value={serialNumber}
             onChange={(e) => setSerialNumber(e.target.value)}
             required
@@ -58,12 +59,13 @@ const UpdateProduct = () => {
           />
         </div>
         <div className="mb-6">
-          <label htmlFor="brand" className="block text-lg font-medium text-gray-700">
+          <label htmlFor="brand" className="block text-lg font-medium text-white-700">
             Brand Name
           </label>
           <input
             type="text"
             id="brand"
+            placeholder='Enter Name brand'
             value={brand}
             onChange={(e) => setBrand(e.target.value)}
             required
@@ -73,9 +75,9 @@ const UpdateProduct = () => {
         <button
           type="submit"
           disabled={loading}
-          className={`w-full py-2 text-white font-semibold rounded-md focus:outline-none ${loading ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'} transition duration-300`}
+          className={`w-full py-2 text-white font-semibold rounded-md focus:outline-none ${loading ? 'bg-gray-400' : 'bg-[#5f2476] hover:bg-[#5f2476]'} transition duration-300`}
         >
-          {loading ? 'Updating...' : 'Update Brand'}
+          {loading ? 'loading...' : 'Add Product'}
         </button>
       </form>
     </div>

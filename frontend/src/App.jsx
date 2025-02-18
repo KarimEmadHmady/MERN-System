@@ -49,7 +49,7 @@ const App = () => {
       <main className="py-3">
         <Outlet />
       </main>
-      <footer className="bg-black lg:grid lg:grid-cols-5 footer-bg ">
+{/*       <footer className="bg-black lg:grid lg:grid-cols-5 footer-bg ">
   <div className="relative block h-32 lg:col-span-2 lg:h-full">
   
     <img
@@ -311,7 +311,7 @@ const App = () => {
       </div>
     </div>
   </div>
-      </footer>
+      </footer> */}
     </>
   );
 

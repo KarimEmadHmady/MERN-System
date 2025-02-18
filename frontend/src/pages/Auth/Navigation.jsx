@@ -63,7 +63,7 @@ const Navigation = () => {
           className="flex items-center transition-transform transform hover:translate-x-2"
         >
           <AiOutlineShopping className="mr-2 mt-[3rem]" size={26} />
-          <span className="hidden nav-item-name mt-[3rem]">SHOP</span>{" "}
+          <span className="hidden nav-item-name mt-[3rem]">Products</span>{" "}
         </Link>
 
         <Link to="/cart" className="flex relative">
@@ -126,7 +126,7 @@ const Navigation = () => {
 
         {dropdownOpen && userInfo && (
           <ul
-            className={`  absolute right-4 mt-[0.5rem] mr-14 space-y-2 bg-[#000] text-[#5f2476] ${
+            className={` navi-users  absolute  -mt-[4.1rem] mr-14 space-y-2 bg-[#000] text-[#5f2476] ${
               !userInfo.isAdmin ? "-top-20" : "-top-80"
             } `}
           >
