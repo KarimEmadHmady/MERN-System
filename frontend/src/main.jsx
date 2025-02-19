@@ -1,3 +1,4 @@
+
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
@@ -39,7 +40,6 @@ import UserOrder from "./pages/User/UserOrder.jsx";
 import SessionTable from "./pages/Admin/SessionTable.jsx";
 import UpdateProduct from "./pages/User/UpdateProduct.jsx";
 
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -50,15 +50,15 @@ const router = createBrowserRouter(
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/shop" element={<Shop />} />
-      <Route path="/addserialNumber" element={<UpdateProduct />} />
 
       {/* Registered users */}
       <Route path="" element={<PrivateRoute />}>
-      <Route path="/user-orders" element={<UserOrder />} />
+        <Route path="/user-orders" element={<UserOrder />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/shipping" element={<Shipping />} />
         <Route path="/placeorder" element={<PlaceOrder />} />
         <Route path="/order/:id" element={<Order />} />
+        <Route path="/addserialNumber" element={<UpdateProduct />} /> 
       </Route>
 
       <Route path="/admin" element={<AdminRoute />}>

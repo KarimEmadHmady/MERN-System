@@ -38,47 +38,6 @@ const createUser = asyncHandler(async (req, res) => {
 });
 
 
-/* const loginUser = async (req, res) => {
-  const { email, password, location, image } = req.body;
-
-  try {
-    const user = await User.findOne({ email });
-
-    if (user && (await bcrypt.compare(password, user.password))) {
-      const userIP = req.ip;
-      const userAgent = req.headers?.["user-agent"] || "Unknown";
-
-      // ✅ تسجيل بيانات الجلسة
-      const session = new Session({
-        user: user._id,
-        ip: userIP,
-        userAgent: userAgent,
-        location,
-        userImage: image,
-      });
-
-      await session.save();
-
-      // ✅ تمرير `res` إلى `createToken`
-      createToken(res, user._id);
-
-      res.json({
-        _id: user._id,
-        username: user.username,
-        email: user.email,
-        isAdmin: user.isAdmin,
-        location,
-        image,
-      });
-    } else {
-      res.status(401).json({ message: "Invalid email or password" });
-    }
-  } catch (err) {
-    console.error("🔴 Error in loginUser:", err);
-    res.status(500).json({ message: "Internal server error" });
-  }
-}; */
-
 const loginUser = async (req, res) => {
   const { email, password, location, image } = req.body;
 
@@ -88,19 +47,17 @@ const loginUser = async (req, res) => {
     if (user && (await bcrypt.compare(password, user.password))) {
       const userIP = req.ip;
 
-      // ✅ تسجيل بيانات الجلسة مع اسم المستخدم والإيميل بدلًا من `userAgent`
       const session = new Session({
         user: user._id,
         ip: userIP,
-        username: user.username, // اسم المستخدم
-        email: user.email, // البريد الإلكتروني
+        username: user.username, 
+        email: user.email, 
         location,
         userImage: image,
       });
 
       await session.save();
 
-      // ✅ تمرير `res` إلى `createToken`
       createToken(res, user._id);
 
       res.json({
@@ -177,7 +134,7 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
       _id: user._id,
       username: user.username,
       email: user.email,
-      sessions, // إرسال بيانات الجلسات
+      sessions, 
     });
   } else {
     res.status(404);

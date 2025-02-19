@@ -1,6 +1,3 @@
-
-
-
 import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 import asyncHandler from "./asyncHandler.js";
@@ -12,10 +9,9 @@ const authenticate = asyncHandler(async (req, res, next) => {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-      // التحقق من انتهاء صلاحية التوكن
       const currentTime = Math.floor(Date.now() / 1000);
       if (decoded.exp < currentTime) {
-        res.clearCookie("jwt"); // 🔥 حذف التوكن عند انتهاء صلاحيته
+        res.clearCookie("jwt"); 
         res.status(401);
         throw new Error("Session expired. Please log in again.");
       }
@@ -24,7 +20,7 @@ const authenticate = asyncHandler(async (req, res, next) => {
       
       next();
     } catch (error) {
-      res.clearCookie("jwt"); // حذف الكوكيز عند فشل التحقق
+      res.clearCookie("jwt"); 
       res.status(401);
       throw new Error("Not authorized, token failed.");
     }
@@ -34,10 +30,6 @@ const authenticate = asyncHandler(async (req, res, next) => {
   }
 });
  
-
-
-
-
 const authorizeAdmin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {
     next();
@@ -45,7 +37,6 @@ const authorizeAdmin = (req, res, next) => {
     res.status(401).send("Not authorized as an admin.");
   }
 };
-
 
 
 const protect = (req, res, next) => {
@@ -60,7 +51,7 @@ const protect = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (error) {
-    res.clearCookie("jwt"); // حذف الكوكيز عند انتهاء صلاحية التوكن
+    res.clearCookie("jwt"); 
     res.status(401).json({ message: "Session expired, please log in again" });
   }
 };

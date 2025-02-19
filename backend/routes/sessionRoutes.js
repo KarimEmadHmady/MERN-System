@@ -3,7 +3,6 @@ import Session from "../models/Session.js";
 
 const router = express.Router();
 
-// ✅ جلب جميع الجلسات
 router.get("/", async (req, res) => {
   try {
     const sessions = await Session.find().populate("user", "username email");

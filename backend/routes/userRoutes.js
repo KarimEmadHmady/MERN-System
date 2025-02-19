@@ -21,9 +21,9 @@ router
   .get(authenticate, authorizeAdmin, getAllUsers);
 
   router.post("/auth", (req, res) => {
-    const { email, password, location, image } = req.body; // 🟢 استقبال الموقع والصورة
+    const { email, password, location, image } = req.body; 
     
-    // إرسال البيانات إلى `loginUser` في `userController.js`
+
     loginUser({ body: { email, password, location, image } }, res);
 });
 
@@ -37,7 +37,7 @@ router
   .get(authenticate, getCurrentUserProfile)
   .put(authenticate, updateCurrentUserProfile) , protect;
 
-// ADMIN ROUTES 👇
+// ADMIN ROUTES 
 router
   .route("/:id")
   .delete(authenticate, authorizeAdmin, deleteUserById)

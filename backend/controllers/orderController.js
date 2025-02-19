@@ -9,73 +9,13 @@
       0
     );
 
-    const totalPrice = itemsPrice.toFixed(2); // No tax or shipping
+    const totalPrice = itemsPrice.toFixed(2); 
 
     return {
       itemsPrice: totalPrice,
       totalPrice,
     };
   }
-/*   const createOrder = async (req, res) => {
-
-    try {
-      console.log("Order request body:", req.body);
-      console.log("User ID:", req.user ? req.user._id : "User not authenticated");
-  
-      const { orderItems, shippingAddress, paymentMethod } = req.body;
-  
-      if (!req.user) {
-        return res.status(401).json({ error: "User not authenticated" });
-      }
-  
-      if (!orderItems || orderItems.length === 0) {
-        return res.status(400).json({ error: "No order items" });
-      }
-  
-      const itemsFromDB = await Product.find({
-        _id: { $in: orderItems.map((x) => x._id) }, // بدل x.product استخدم x._id
-        
-      });
-      
-  
-      const dbOrderItems = orderItems.map((itemFromClient) => {
-        const matchingItemFromDB = itemsFromDB.find(
-          (itemFromDB) => itemFromDB._id.toString() === itemFromClient._id
-        );
-  
-        if (!matchingItemFromDB) {
-          throw new Error(`Product not found: ${itemFromClient.product}`);
-        }
-
-        
-  
-        return {
-          ...itemFromClient,
-          price: matchingItemFromDB.price,
-          serialnumber: matchingItemFromDB.serialnumber,
-        };
-        
-      });
-  
-      const { itemsPrice, totalPrice } = calcPrices(dbOrderItems);
-  
-      const order = new Order({
-        orderItems: dbOrderItems,
-        user: req.user._id,
-        shippingAddress,
-        paymentMethod,
-        itemsPrice,
-        totalPrice,
-      });
-  
-      const createdOrder = await order.save();
-      res.status(201).json(createdOrder);
-    } catch (error) {
-      console.error("Error creating order:", error.message);
-      res.status(500).json({ error: error.message });
-    }
-  };
-   */
 
   const createOrder = async (req, res) => {
     try {
@@ -114,7 +54,6 @@
   
       const { itemsPrice, totalPrice } = calcPrices(dbOrderItems);
   
-      // إرسال الإيميل بعد حساب totalPrice
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -123,13 +62,13 @@
         },
       });
   
-      const userEmail = req.user.email; // Customer's email
-      const brandName = req.body.orderItems[0].brand; // Brand name from the first item in the order
-      const orderDate = new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" }); // Current date & time in Egypt timezone
+      const userEmail = req.user.email; 
+      const brandName = req.body.orderItems[0].brand; 
+      const orderDate = new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" }); 
       
       const mailOptions = {
         from: userEmail,
-        to: [userEmail, "karimemad2066@gmail.com"], // Sending to customer & brand email
+        to: [userEmail, "karimemad2066@gmail.com"], 
         subject: "New Order Confirmation",
         text: `
         🎉 Hi Dear,
@@ -154,8 +93,6 @@
       };
       
       
-      
-  
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
           console.error("Error sending email:", error);
@@ -313,7 +250,7 @@
         return res.status(404).json({ error: "Order not found" });
       }
   
-      await order.deleteOne(); // Delete the order from the database
+      await order.deleteOne(); 
       res.status(200).json({ message: "Order deleted successfully" });
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -322,7 +259,7 @@
   
   const deleteAllOrders = async (req, res) => {
     try {
-      await Order.deleteMany({}); // Deletes all orders from the database
+      await Order.deleteMany({}); 
       res.status(200).json({ message: "All orders deleted successfully" });
     } catch (error) {
       res.status(500).json({ error: error.message });

@@ -25,7 +25,7 @@ const PlaceOrder = () => {
 
   const placeOrderHandler = async () => {
     try {
-      const totalPrice = cart.itemsPrice; // Excluding tax and shipping
+      const totalPrice = cart.itemsPrice; 
 
       const res = await createOrder({
         orderItems: cart.cartItems,

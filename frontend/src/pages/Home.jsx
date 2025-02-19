@@ -1,5 +1,3 @@
-
-
 const Home = () => {
 
   return (
@@ -104,8 +102,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-
 
       <section className="sections-contact">
         <div className="container px-6 py-12 mx-auto">

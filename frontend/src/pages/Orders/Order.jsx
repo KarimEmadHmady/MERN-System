@@ -1,16 +1,7 @@
-import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
-import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import Messsage from "../../components/Message";
+import Message from "../../components/Message";
 import Loader from "../../components/Loader";
-import {
-  useDeliverOrderMutation,
-  useGetOrderDetailsQuery,
-  useGetPaypalClientIdQuery,
-  usePayOrderMutation,
-} from "../../redux/api/orderApiSlice";
+import { useGetOrderDetailsQuery} from "../../redux/api/orderApiSlice";
 
 const Order = () => {
   const { id: orderId } = useParams();
@@ -22,54 +13,15 @@ const Order = () => {
     error,
   } = useGetOrderDetailsQuery(orderId);
 
-  const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation();
-  const [deliverOrder, { isLoading: loadingDeliver }] =
-    useDeliverOrderMutation();
-  const { userInfo } = useSelector((state) => state.auth);
+  if (isLoading) return <Loader />;
+  if (error) return <Message variant="danger">{error.data.message}</Message>;
 
-  const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
-
-  const {
-    data: paypal,
-    isLoading: loadingPaPal,
-    error: errorPayPal,
-  } = useGetPaypalClientIdQuery();
-
-  useEffect(() => {
-    if (!errorPayPal && !loadingPaPal && paypal.clientId) {
-      const loadingPaPalScript = async () => {
-        paypalDispatch({
-          type: "resetOptions",
-          value: {
-            "client-id": paypal.clientId,
-            currency: "USD",
-          },
-        });
-        paypalDispatch({ type: "setLoadingStatus", value: "pending" });
-      };
-
-      if (order && !order.isPaid) {
-        if (!window.paypal) {
-          loadingPaPalScript();
-        }
-      }
-    }
-  }, [errorPayPal, loadingPaPal, order, paypal, paypalDispatch]);
-
-
-
-
-
-  return isLoading ? (
-    <Loader />
-  ) : error ? (
-    <Messsage variant="danger">{error.data.message}</Messsage>
-  ) : (
+  return (
     <div className="page-info-order container flex flex-col ml-[10rem] md:flex-row">
       <div className="md:w-2/3 pr-4">
         <div className="border gray-300 mt-5 pb-4 mb-5">
           {order.orderItems.length === 0 ? (
-            <Messsage>Order is empty</Messsage>
+            <Message>Order is empty</Message>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-[80%]">
@@ -77,7 +29,7 @@ const Order = () => {
                   <tr>
                     <th className="p-2">Image</th>
                     <th className="p-2">Product</th>
-                    <th className="p-2">serial number	</th>
+                    <th className="p-2">Serial Number</th>
                     <th className="p-2 text-center">Quantity</th>
                     <th className="p-2">Date</th>
                     <th className="p-2">Total</th>
@@ -103,18 +55,14 @@ const Order = () => {
                       <td className="p-2 text-center">{item.qty}</td>
                       <td className="p-2 text-center">
                         {new Date(order.createdAt).toLocaleString("en-US", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            hour12: true,
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                          hour12: true,
                         })}
                       </td>
-
-
-
-                      
                       <td className="p-2 text-center">
                         L.E {(item.qty * item.price).toFixed(2)}
                       </td>
@@ -152,41 +100,31 @@ const Order = () => {
               </span>
             ))}
           </p>
-            
-          
+
           <p className="mb-4">
-            <strong className="text-[#5f2476]">information:</strong>{" "}
+            <strong className="text-[#5f2476]">Information:</strong>{" "}
             <p>Serial Number: {order.shippingAddress.address}</p>
-            <p>Product Name: {order.shippingAddress.city}</p>{" "}
-            <p>Salesman: {order.shippingAddress.country}</p>{" "}
-           
+            <p>Product Name: {order.shippingAddress.city}</p>
+            <p>Salesman: {order.shippingAddress.country}</p>
           </p>
         </div>
 
         <h2 className="text-xl font-bold mb-2 mt-[1rem]">Order Summary</h2>
-{/* <div className="flex justify-between mb-2">
-  <span>Items</span>
-  <span>$ {order.itemsPrice}</span>
-</div> */}
-<div className="flex justify-between mb-2">
-  <span>Total number of Items</span>
-  <span>{order.orderItems.reduce((acc, item) => acc + item.qty, 0)}</span>
-</div>
 
-<div className="flex justify-between mb-2">
-  <span>Products Name</span>
-  <span>
-    {order.orderItems.map((item) => item.name).join(", ")}
-  </span>
-</div>
+        <div className="flex justify-between mb-2">
+          <span>Total number of Items</span>
+          <span>{order.orderItems.reduce((acc, item) => acc + item.qty, 0)}</span>
+        </div>
 
-<div className="flex justify-between mb-2">
-  <span>Total Price</span>
-  <span>L.E {order.itemsPrice}</span> 
-</div>
+        <div className="flex justify-between mb-2">
+          <span>Products Name</span>
+          <span>{order.orderItems.map((item) => item.name).join(", ")}</span>
+        </div>
 
-
-
+        <div className="flex justify-between mb-2">
+          <span>Total Price</span>
+          <span>L.E {order.itemsPrice}</span>
+        </div>
       </div>
     </div>
   );

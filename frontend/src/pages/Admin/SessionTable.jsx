@@ -23,7 +23,6 @@ const SessionTable = () => {
        <AdminMenu />
       <h2 className="text-xl font-bold mb-4">سجلات التسجيل</h2>
 
-      {/* 🔹 زر تحميل البيانات في Excel */}
       <CSVLink 
   data={sessions.map(session => ({
     رقم: session._id,
@@ -39,7 +38,6 @@ const SessionTable = () => {
 </CSVLink>
 
 
-      {/* 🔹 جدول عرض البيانات */}
       <table className="w-full border-collapse border border-gray-300 mt-4">
         <thead>
           <tr className="bg-black-200">
@@ -56,7 +54,6 @@ const SessionTable = () => {
             <tr key={session._id} className="text-center">
               <td className="border p-2">{index + 1}</td>
 
-              {/* 🔹 عرض صورة المستخدم من قاعدة البيانات */}
               <td className="border p-2">
                 {session.userImage ? (
                   <img 

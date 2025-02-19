@@ -21,7 +21,7 @@ const Shop = () => {
   const categoriesQuery = useFetchCategoriesQuery();
   const [priceFilter, setPriceFilter] = useState("");
   
-  const [isFilterOpen, setIsFilterOpen] = useState(false); // Step 1: State to track if the filter is open
+  const [isFilterOpen, setIsFilterOpen] = useState(false); 
 
   const filteredProductsQuery = useGetFilteredProductsQuery({
     checked,

@@ -1,4 +1,3 @@
-// userModel.js - تحديث المخطط ليشمل الصورة والموقع
 import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema(
@@ -7,8 +6,8 @@ const userSchema = mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     isAdmin: { type: Boolean, required: true, default: false },
-    location: { type: String }, // إضافة الموقع الجغرافي
-    userImage: { type: String }, // إضافة الصورة الشخصية
+    location: { type: String }, 
+    userImage: { type: String }, 
   },
   { timestamps: true }
 );

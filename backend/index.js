@@ -3,8 +3,6 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-
-// 🛠️ استيراد الملفات الخاصة بالمشروع
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
@@ -25,7 +23,7 @@ app.set("trust proxy", true);
 app.use(
   cors({
     origin: "http://localhost:5173", 
-    credentials: true, // ✅ مهم جدًا للسماح بتمرير الجلسات
+    credentials: true, 
   })
 );
 app.use(express.urlencoded({ extended: true }));

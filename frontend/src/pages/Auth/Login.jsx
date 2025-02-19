@@ -28,13 +28,11 @@ const Login = () => {
     }
   }, [navigate, redirect, userInfo]);
 
-  // التقاط صورة من الكاميرا
   const capture = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImage(imageSrc);
   };
 
-  // الحصول على الموقع الجغرافي
   const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -68,7 +66,7 @@ const Login = () => {
       const res = await login({ email, password, image, location }).unwrap();
       dispatch(setCredentials({ ...res }));
       localStorage.setItem("loginTime", Date.now());
-      navigate(redirect);
+      navigate("/updateProduct");
     } catch (err) {
       console.error("🔴 خطأ في تسجيل الدخول:", err);
       toast.error(err?.data?.message || err.error);
