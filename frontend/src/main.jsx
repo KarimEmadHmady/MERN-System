@@ -39,6 +39,7 @@ import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 import UserOrder from "./pages/User/UserOrder.jsx";
 import SessionTable from "./pages/Admin/SessionTable.jsx";
 import UpdateProduct from "./pages/User/UpdateProduct.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -72,6 +73,8 @@ const router = createBrowserRouter(
         <Route path="dashboard" element={<AdminDashboard />} />
         <Route path="sessionTable" element={<SessionTable />} />
       </Route>
+
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
 );
