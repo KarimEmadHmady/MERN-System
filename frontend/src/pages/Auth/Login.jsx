@@ -66,7 +66,7 @@ const Login = () => {
       const res = await login({ email, password, image, location }).unwrap();
       dispatch(setCredentials({ ...res }));
       localStorage.setItem("loginTime", Date.now());
-      navigate("/updateProduct");
+      navigate("/addserialNumber");
     } catch (err) {
       console.error("🔴 خطأ في تسجيل الدخول:", err);
       toast.error(err?.data?.message || err.error);
