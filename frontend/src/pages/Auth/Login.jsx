@@ -20,12 +20,13 @@ const Login = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const { search } = useLocation();
   const sp = new URLSearchParams(search);
-  const redirect = sp.get("redirect") || "/";
+  const redirect = sp.get("redirect") || "/addserialNumber";
+
 
   useEffect(() => {
     if (userInfo) {
-      navigate(redirect);
-    }
+      navigate(redirect || "/addserialNumber");
+    }     
   }, [navigate, redirect, userInfo]);
 
   const capture = () => {
@@ -66,7 +67,8 @@ const Login = () => {
       const res = await login({ email, password, image, location }).unwrap();
       dispatch(setCredentials({ ...res }));
       localStorage.setItem("loginTime", Date.now());
-      navigate("/addserialNumber");
+      navigate(redirect || "/addserialNumber");
+
     } catch (err) {
       console.error("🔴 خطأ في تسجيل الدخول:", err);
       toast.error(err?.data?.message || err.error);
@@ -77,7 +79,7 @@ const Login = () => {
     if (userInfo) {
       const loginTime = localStorage.getItem("loginTime");
       const currentTime = Date.now();
-      const tenHours = 10 * 60 * 60 * 1000; // 10 ساعات
+      const tenHours = 10 * 60 * 60 * 1000; 
   
       if (loginTime && currentTime - loginTime >= tenHours) {
         dispatch(logout());

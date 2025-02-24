@@ -34,7 +34,6 @@ const Navigation = () => {
 
   const [logoutApiCall] = useLogoutMutation();
 
-    // إخفاء Navigation في صفحات تسجيل الدخول والتسجيل
     if (location.pathname === "/login" || location.pathname === "/register") {
       return null;
     }

@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import { useRegisterMutation } from "../../redux/api/usersApiSlice";
-import { setCredentials } from "../../redux/features/auth/authSlice";
+// import { setCredentials } from "../../redux/features/auth/authSlice";
 import { toast } from "react-toastify";
 
 const Register = () => {
@@ -21,7 +21,7 @@ const Register = () => {
 
   const { search } = useLocation();
   const sp = new URLSearchParams(search);
-  const redirect = sp.get("redirect") || "/";
+  const redirect = sp.get("/login") || "/";
 
   useEffect(() => {
     if (userInfo) {
@@ -31,22 +31,22 @@ const Register = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
+  
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
     } else {
       try {
-        const res = await register({ username, email, password }).unwrap();
-        dispatch(setCredentials({ ...res }));
-        navigate("/login");
+        await register({ username, email, password }).unwrap();
         toast.success("User successfully registered");
+        navigate("/login"); 
       } catch (err) {
         console.log(err);
-        toast.error(err.data.message);
+        toast.error(err.data.message || "Registration failed");
       }
     }
   };
-
+  
+  
   return (
     <section className="page-login-container pl-[10rem] flex flex-wrap">
       <div className="mr-[4rem] mt-[5rem]">
