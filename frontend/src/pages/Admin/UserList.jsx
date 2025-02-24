@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import { FaTrash, FaEdit, FaCheck, FaTimes } from "react-icons/fa";
 import Message from "../../components/Message";
@@ -11,7 +9,7 @@ import {
 } from "../../redux/api/usersApiSlice";
 import { toast } from "react-toastify";
 import AdminMenu from "./AdminMenu";
-
+import { CSVLink } from "react-csv";  // إضافة مكتبة CSVLink
 
 const UserList = () => {
   const { data: users, refetch, isLoading, error } = useGetUsersQuery();
@@ -69,8 +67,29 @@ const UserList = () => {
           {error?.data?.message || error.error}
         </Message>
       ) : (
-        <div className="flex flex-col md:flex-row">
-          {/* <AdminMenu /> */}
+        <div className="flex flex-col items-center">
+          {/* إضافة زر تحميل CSV */}
+          <CSVLink
+            data={users.map((user) => ({
+              "User ID": user._id,
+              "Name": user.username,
+              "Email": user.email,
+              "Admin": user.isAdmin ? "Yes" : "No",
+              "Created At": new Date(user.createdAt).toLocaleString("en-US", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: true,
+              }),
+            }))}
+            filename="users.csv"
+            className="mb-4 p-2 bg-green-500 text-white rounded w-[50%]  text-center "
+          >
+            تحميل كـ Excel
+          </CSVLink>
+
           <table className="w-full md:w-4/5 mx-auto">
             <thead>
               <tr>
@@ -136,7 +155,7 @@ const UserList = () => {
                         <a href={`mailto:${user.email}`}>{user.email}</a>{" "}
                         <button
                           onClick={() =>
-                            toggleEdit(user._id, user.name, user.email)
+                            toggleEdit(user._id, user.username, user.email)
                           }
                         >
                           <FaEdit className="ml-[1rem]" />
@@ -183,6 +202,3 @@ const UserList = () => {
 };
 
 export default UserList;
-
-
-

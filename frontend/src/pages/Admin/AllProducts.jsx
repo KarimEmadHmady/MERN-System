@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import { useAllProductsQuery } from "../../redux/api/productApiSlice";
 import AdminMenu from "./AdminMenu";
+import { CSVLink } from "react-csv"; // استيراد مكتبة CSVLink
 
 const AllProducts = () => {
   const { data: products, isLoading, isError } = useAllProductsQuery();
@@ -17,11 +18,29 @@ const AllProducts = () => {
   return (
     <>
       <div className="container mx-[9rem] cargorylist-page">
-        <div className="flex flex-col  md:flex-row">
+        <div className="flex flex-col md:flex-row">
           <div className="p-3">
             <div className="ml-[2rem] text-xl font-bold h-12">
               All Products ({products.length})
             </div>
+
+            {/* زر تحميل المنتجات بتنسيق CSV */}
+            <CSVLink
+              data={products.map((product) => ({
+                "Product Name": product.name,
+                "Serial Number": product.serialnumber,
+                "Brand": product?.brand || "N/A", // إضافة البراند إن وجد
+                "Date of Creation": moment(product.createdAt).format("MMMM Do YYYY"),
+                "Price": `L.E ${product.price}`,
+                "Quantity": product.quantity || "N/A", // إضافة الكمية
+                "Count In Stock": product.countInStock || "N/A", // إضافة عدد المتوفر في المخزون
+              }))}
+              filename="all_products.csv"
+              className="mb-4 inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-500"
+            >
+              تحميل المنتجات كـ Excel
+            </CSVLink>
+
             <div className="flex flex-wrap justify-around items-center">
               {products.map((product) => (
                 <Link
@@ -42,12 +61,12 @@ const AllProducts = () => {
                         </h5>
 
                         <p className="text-gray-400 text-xs">
-                         Date of creation :  {moment(product.createdAt).format("MMMM Do YYYY")}
+                          Date of creation: {moment(product.createdAt).format("MMMM Do YYYY")}
                         </p>
                       </div>
 
                       <p className="text-gray-400 xl:w-[30rem] lg:w-[30rem] md:w-[20rem] sm:w-[10rem] text-sm mb-4">
-                       Serial Number: {product?.serialnumber?.substring(0, 160)}
+                        Serial Number: {product?.serialnumber?.substring(0, 160)}
                       </p>
 
                       <div className="flex justify-between">
@@ -75,12 +94,10 @@ const AllProducts = () => {
                         <p>L.E {product?.price}</p>
                       </div>
                     </div>
-                    
                   </div>
                 </Link>
               ))}
             </div>
-          
           </div>
           <div className="md:w-1/4 p-3 mt-2">
             <AdminMenu />

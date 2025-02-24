@@ -6,13 +6,13 @@ const UpdateProduct = () => {
   const [serialNumber, setSerialNumber] = useState('');
   const [brand, setBrand] = useState('');
   const [loading, setLoading] = useState(false);
-
+  const [products, setProducts] = useState([]); 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
+
     console.log("Sending data:", { serialnumber: serialNumber, brand });
-  
+
     try {
       const response = await axios.put(
         `/api/products/update-brand`,
@@ -24,11 +24,14 @@ const UpdateProduct = () => {
           },
         }
       );
-  
+
       if (response.status === 200) {
-        toast.success("Brand And product Add successfully!");
-        setSerialNumber(''); 
-        setBrand(''); 
+        toast.success("Brand And product added successfully!");
+        
+        setProducts([...products, { serialNumber, brand }]);
+        
+        setSerialNumber('');
+        setBrand('');
       }
     } catch (error) {
       console.error("Axios error:", error.response?.data);
@@ -37,11 +40,9 @@ const UpdateProduct = () => {
       setLoading(false);
     }
   };
-  
-  
 
   return (
-    <div className="brand-serialnumber max-w-xl mx-auto p-6 bg-black rounded-lg shadow-lg mt-[150px]  ">
+    <div className="brand-serialnumber max-w-xl mx-auto p-6 bg-black rounded-lg shadow-lg mt-[150px]">
       <h2 className="text-3xl font-semibold text-center mb-6">Add Product And Brand Name by Serial Number</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -65,7 +66,7 @@ const UpdateProduct = () => {
           <input
             type="text"
             id="brand"
-            placeholder='Enter Name brand'
+            placeholder='Enter Brand Name'
             value={brand}
             onChange={(e) => setBrand(e.target.value)}
             required
@@ -80,8 +81,22 @@ const UpdateProduct = () => {
           {loading ? 'loading...' : 'Add Product'}
         </button>
       </form>
+
+      {products.length > 0 && (
+        <div className="mt-6">
+          <h3 className="text-xl font-semibold text-white">Added Products:</h3>
+          <ul className="mt-4 text-white">
+            {products.map((product, index) => (
+              <li key={index} className="mb-2">
+                Serial Number: {product.serialNumber} | Brand: {product.brand}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
 
 export default UpdateProduct;
+
