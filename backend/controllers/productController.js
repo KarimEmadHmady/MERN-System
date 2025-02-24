@@ -71,9 +71,13 @@ const removeProduct = asyncHandler(async (req, res) => {
   }
 });
 
+
+
 const fetchProducts = asyncHandler(async (req, res) => {
   try {
+    
     const pageSize = 6;
+    const page = Number(req.query.pageNumber) || 1;
 
     const keyword = req.query.keyword
       ? {
@@ -84,20 +88,31 @@ const fetchProducts = asyncHandler(async (req, res) => {
         }
       : {};
 
-    const count = await Product.countDocuments({ ...keyword });
-    const products = await Product.find({ ...keyword }).limit(pageSize);
+    const count = await Product.countDocuments({
+      ...keyword,
+      distributor: req.user._id, 
+    });
+
+    const products = await Product.find({
+      ...keyword,
+      distributor: req.user._id,
+    })
+      .limit(pageSize)
+      .skip(pageSize * (page - 1)); 
 
     res.json({
       products,
-      page: 1,
+      page,
       pages: Math.ceil(count / pageSize),
-      hasMore: false,
+      hasMore: page < Math.ceil(count / pageSize),
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: "حدث خطأ في السيرفر" });
   }
 });
+
+
 
 const fetchProductById = asyncHandler(async (req, res) => {
   try {
@@ -206,10 +221,37 @@ const filterProducts = asyncHandler(async (req, res) => {
   }
 });
 
+// const updateBrandBySerialNumber = asyncHandler(async (req, res) => {
+//   try {
+
+
+//     const { serialnumber, brand } = req.body;
+
+//     if (!serialnumber) {
+//       return res.status(400).json({ error: "Serial number is required" });
+//     }
+//     if (!brand) {
+//       return res.status(400).json({ error: "Brand is required" });
+//     }
+
+//     const product = await Product.findOne({ serialnumber });
+    
+//     if (!product) {
+//       return res.status(404).json({ error: "Product not found" });
+//     }
+    
+//     product.brand = brand;
+//     await product.save();
+//     console.log(req.body);
+//     res.json({ message: "Brand updated successfully", product });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: "Server error" });
+//   }
+// });
+
 const updateBrandBySerialNumber = asyncHandler(async (req, res) => {
   try {
-
-
     const { serialnumber, brand } = req.body;
 
     if (!serialnumber) {
@@ -220,21 +262,21 @@ const updateBrandBySerialNumber = asyncHandler(async (req, res) => {
     }
 
     const product = await Product.findOne({ serialnumber });
-    
+
     if (!product) {
       return res.status(404).json({ error: "Product not found" });
     }
-    
+
     product.brand = brand;
+    product.distributor = req.user._id; // ربط المنتج بالموزع الحالي
     await product.save();
-    console.log(req.body);
+
     res.json({ message: "Brand updated successfully", product });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Server error" });
   }
 });
-
 
 
 export {

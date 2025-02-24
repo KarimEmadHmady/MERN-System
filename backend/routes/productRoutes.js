@@ -23,7 +23,7 @@ router.route("/update-brand").put(authenticate, updateBrandBySerialNumber);
 
 router
   .route("/")
-  .get(fetchProducts)
+  .get(authenticate, fetchProducts) 
   .post(authenticate, authorizeAdmin, formidable(), addProduct);
 
 router.route("/allproducts").get(fetchAllProducts);

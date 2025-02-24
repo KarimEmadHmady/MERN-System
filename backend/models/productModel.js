@@ -23,6 +23,7 @@ const productSchema = mongoose.Schema(
     quantity: { type: Number, required: true },
     category: { type: ObjectId, ref: "Category", required: true },
     serialnumber: { type: String, required: true , unique: true  },
+    distributor: { type: ObjectId, ref: "User", required: false }, // موزع المنتج
     reviews: [reviewSchema],
     rating: { type: Number, required: true, default: 0 },
     numReviews: { type: Number, required: true, default: 0 },
