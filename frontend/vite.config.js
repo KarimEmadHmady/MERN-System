@@ -10,4 +10,9 @@ export default defineConfig({
       "/uploads/": "http://localhost:5001",
     },
   },
+  build: {
+    rollupOptions: {
+      external: ['react-webcam'],
+    }
+  }
 });
