@@ -41,7 +41,7 @@ textarea {
   margin:22px 0 ;
   opacity: 0.8;
 }
-.shop-products {
+/* .shop-products {
   background-image: url(/uploads/backg-ho.png);
   background-size: cover;
   background-position-y: -169px;
@@ -62,7 +62,7 @@ textarea {
   background-size: cover;
   background-position: 30%;
   background-position-x: 389px;
-}
+} */
 
 .btn-profile-menu {
   padding: 2px 7px;  background-color: #5f2476; border-radius: 5px;
